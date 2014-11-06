@@ -1,0 +1,122 @@
+---
+"$schema": http://json-schema.org/draft-04/hyper-schema
+title: Project
+definitions:
+  id:
+    description: Unique identifier of project
+    "$ref": "/schemata/common#/definitions/id"
+  identity:
+    "$ref": "/schemata/project#/definitions/id"
+  created_at:
+    description: When project was created
+    "$ref": "/schemata/common#/definitions/created_at"
+  updated_at:
+    description: When project was updated
+    "$ref": "/schemata/common#/definitions/updated_at"
+  name:
+    description: The name of the Project
+    example: HelpNows generelle arbejde
+    "$ref": "/schemata/common#/definitions/name"
+  description:
+    description: The text written by the Project's administrators. Contains HTML
+    example: We need your money for this <b>GREAT</b> project
+    "$ref": "/schemata/common#/definitions/description"
+  url:
+    example: 'https://api.betternow.org/projects/1234567'
+    "$ref": "/schemata/common#/definitions/url"
+  html_url:
+    description: The current url to view the project page on BetterNow. This can, and does, change. Requests to old urls will be redirect to the current url.
+    example: 'https://www.betternow.org/dk/helpnow-projekt'
+    "$ref": "/schemata/common#/definitions/html_url"
+  fundraisers:
+    description: An array of summarized fundraisers
+    items:
+      "$ref": "/schemata/fundraiser#/definitions/fundraiser_summary"
+    type: array
+  project_summary:
+    description: A summarized version of the Project for use in other resources
+    type:
+      - object
+    properties:
+      id:
+        "$ref": "/schemata/project#/definitions/id"
+      name:
+        "$ref": "/schemata/project#/definitions/name"
+      url:
+        "$ref": "/schemata/project#/definitions/url"
+      html_url:
+        "$ref": "/schemata/project#/definitions/html_url"
+  donate_url:
+    description: The current url to donate directly to the project on BetterNow. This can, and does, change. Requests to old urls will be redirect to the current url.
+    example: 'https://www.betternow.org/dk/fundraisers/helpnow-indsamling21/donations/new'
+    "$ref": "/schemata/project#/definitions/url"
+  new_fundraiser_url:
+    description: The current url to create a new Fundraiser for this project on BetterNow. This can, and does, change. Requests to old urls will redirect to the current url.
+    example: 'https://www.betternow.org/dk/projects/helpnow-projekt/fundraisers/new'
+    "$ref": "/schemata/project#/definitions/url"
+  donations:
+    description: Information about the donations to this project
+    type:
+      - object
+    properties:
+      count:
+        description: The count of all donations made to this project
+        example: 123
+        type:
+          - integer
+      total_donated:
+        description: The monetary total of all donations
+        "$ref": "/schemata/common#/definitions/amount"
+      url:
+        description: The url to retrieve details on all donations made to this project
+        example: 'https://api.betternow.org/projects/1234567/donations'
+        "$ref": "/schemata/common#/definitions/url"
+description: A Project is a specific cause that Users can Fundraise for. An Organisation typically has several Projects
+links:
+- description: Info for existing project.
+  href: "/projects/{(%2Fschemata%2Fproject%23%2Fdefinitions%2Fidentity)}"
+  method: GET
+  rel: self
+  title: Info
+- description: List all Fundraisers for an existing Project. Fundraisers will be ordered by activity score, descending.
+  href:  "/projects/{(%2Fschemata%2Fproject%23%2Fdefinitions%2Fidentity)}/fundraisers"
+  method: GET
+  rel: fundraiser
+  title: List Fundraisers
+  targetSchema:
+    items:
+      "$ref": "/schemata/fundraiser"
+- description: List the donations for existing project. Donations will always be returned in reverse-chronological order (newest first).
+  href:  "/projects/{(%2Fschemata%2Fproject%23%2Fdefinitions%2Fidentity)}/donations"
+  method: GET
+  rel: donation
+  title: List Donations
+  targetSchema:
+    items:
+      "$ref": "/schemata/donation"
+properties:
+  created_at:
+    "$ref": "/schemata/project#/definitions/created_at"
+  description:
+    "$ref": "/schemata/project#/definitions/description"
+  donations:
+    "$ref": "/schemata/project#/definitions/donations"
+  donate_url:
+    "$ref": "/schemata/project#/definitions/donate_url"
+  html_url:
+    "$ref": "/schemata/project#/definitions/html_url"
+  id:
+    "$ref": "/schemata/project#/definitions/id"
+  fundraisers:
+    "$ref": "/schemata/project#/definitions/fundraisers"
+  name:
+    "$ref": "/schemata/project#/definitions/name"
+  new_fundraiser_url:
+    "$ref": "/schemata/project#/definitions/new_fundraiser_url"
+  updated_at:
+    "$ref": "/schemata/project#/definitions/updated_at"
+  url:
+    "$ref": "/schemata/project#/definitions/url"
+type:
+- object
+id: schemata/project

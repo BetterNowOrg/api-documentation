@@ -1,0 +1,131 @@
+---
+"$schema": http://json-schema.org/draft-04/hyper-schema
+title: Team
+definitions:
+  id:
+    description: unique identifier of team
+    "$ref": "/schemata/common#/definitions/id"
+  identity:
+    "$ref": "/schemata/team#/definitions/id"
+  created_at:
+    description: when team was created
+    "$ref": "/schemata/common#/definitions/created_at"
+  updated_at:
+    description: when team was updated
+    "$ref": "/schemata/common#/definitions/updated_at"
+  logo_url:
+    description: The logo for the Team
+    example: 'https://cdn.example.net/logo.png'
+    "$ref": "/schemata/common#/definitions/logo_url"
+  url:
+    example: 'https://api.betternow.org/team/1234567'
+    "$ref": "/schemata/common#/definitions/url"
+  html_url:
+    description: The url to the Team page on BetterNow
+    example: 'https://www.betternow.org/dk/teams/team-novo'
+    "$ref": "/schemata/common#/definitions/url"
+  cover_media:
+    description: The image or video to be displayed for this Team. On the BetterNow site, if a video is present it takes precedence.
+    "$ref": "/schemata/common#/definitions/cover_media"
+  name:
+    description: the name of the Team
+    example: "Team NOVO"
+    "$ref": "/schemata/common#/definitions/name"
+  description:
+    description: Text describing the Team added by the Team Captain. Contains HTML.
+    "$ref": "/schemata/common#/definitions/description"
+  donations:
+    description: Information about the donations to fundraisers that are members of this team
+    type:
+      - object
+    properties:
+      count:
+        description: The count of all donations made
+        example: 123
+        type:
+          - integer
+      total_donated:
+        description: The monetary total of all donations
+        "$ref": "/schemata/common#/definitions/amount"
+      url:
+        description: The url to retrieve details on all donations made via team members
+        example: 'https://api.betternow.org/teams/1234567/donations'
+        "$ref": "/schemata/common#/definitions/url"
+  captain:
+    description: The user who is the captain of this Team
+    "$ref": "/schemata/user#/definitions/user_summary"
+  slug:
+    description: The current url path component to identify the team. This can, and does, change.
+    example: team-novo
+    "$ref": "/schemata/common#/definitions/slug"
+  fundraisers:
+    description: An array of summarized fundraisers, ordered by total donated, descending
+    items:
+      "$ref": "/schemata/fundraiser#/definitions/fundraiser_summary"
+    type: array
+description: A Team is a collection of Fundraisers, who may or may not be raising money in connection with a single Event.
+links:
+- description: Info for existing team.
+  href: "/teams/{(%2Fschemata%2Fteam%23%2Fdefinitions%2Fidentity)}"
+  method: GET
+  rel: self
+  title: Info
+- description: List existing teams.
+  href: "/teams"
+  method: GET
+  rel: instances
+  title: List
+- description: List all Fundraisers that are members of this Team. Fundraisers will be ordered by the amount of money donated, descending
+  href: "/teams/{(%2Fschemata%2Fteam%23%2Fdefinitions%2Fidentity)}/fundraisers"
+  method: GET
+  rel: fundraiser
+  title: List Fundraisers
+  targetSchema:
+    items:
+      "$ref": "/schemata/fundraiser"
+- description: List all donations given via this Team
+  href: "/teams/{(%2Fschemata%2Fteam%23%2Fdefinitions%2Fidentity)}/donations"
+  method: GET
+  rel: donation
+  title: List Donations
+  targetSchema:
+    items:
+      "$ref": "/schemata/donation"
+- description: List all Projects that team members are fundraising for
+  href: "/teams/{(%2Fschemata%2Fteam%23%2Fdefinitions%2Fidentity)}/projects"
+  method: GET
+  rel: project
+  title: List Projects
+  targetSchema:
+    items:
+      "$ref": "/schemata/project"
+properties:
+  captain:
+    "$ref": "/schemata/team#/definitions/captain"
+  cover_media:
+    "$ref": "/schemata/team#/definitions/cover_media"
+  created_at:
+    "$ref": "/schemata/team#/definitions/created_at"
+  description:
+    "$ref": "/schemata/team#/definitions/description"
+  donations:
+    "$ref": "/schemata/team#/definitions/donations"
+  fundraisers:
+    "$ref": "/schemata/team#/definitions/fundraisers"
+  html_url:
+    "$ref": "/schemata/team#/definitions/html_url"
+  id:
+    "$ref": "/schemata/team#/definitions/id"
+  logo_url:
+    "$ref": "/schemata/team#/definitions/logo_url"
+  name:
+    "$ref": "/schemata/team#/definitions/name"
+  slug:
+    "$ref": "/schemata/team#/definitions/slug"
+  updated_at:
+    "$ref": "/schemata/team#/definitions/updated_at"
+  url:
+    "$ref": "/schemata/team#/definitions/url"
+type:
+- object
+id: schemata/team

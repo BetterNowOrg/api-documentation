@@ -1,0 +1,9 @@
+{
+  "description": "The BetterNow Public API",
+  "id": "betternow-api",
+  "links": [{
+    "href": "https://api.betternow.org",
+    "rel": "self"
+  }],
+  "title": "The BetterNow Public API"
+}

@@ -1,0 +1,101 @@
+---
+"$schema": http://json-schema.org/draft-04/hyper-schema
+title: User
+definitions:
+  id:
+    description: unique identifier of user
+    example: 1234567
+    type:
+    - integer
+  identity:
+    "$ref": "/schemata/user#/definitions/id"
+  created_at:
+    description: when user was created
+    example: '2012-01-01T12:00:00Z'
+    format: date-time
+    type:
+    - string
+  updated_at:
+    description: when user was updated
+    example: '2012-01-01T12:00:00Z'
+    format: date-time
+    type:
+    - string
+  avatar_url:
+    description: The URL for the avatar image for the donor
+    example: "https://cdn.example.net/avatar.jpg"
+    format: uri
+    type:
+      - string
+  first_name:
+    description: The first name of the user
+    example: Firstname
+    type:
+      - string
+  last_name:
+    description: The last name of the user
+    example: Lastname
+    type:
+      - string
+  user_summary:
+    description: A summarized version of the user
+    type:
+      - object
+    properties:
+      avatar_url:
+        "$ref": "/schemata/user#/definitions/avatar_url"
+      first_name:
+        "$ref": "/schemata/user#/definitions/first_name"
+      last_name:
+        "$ref": "/schemata/user#/definitions/last_name"
+description: A BetterNow user
+# links:
+# - description: Create a new user.
+#   href: "/users"
+#   method: POST
+#   rel: create
+#   schema:
+#     properties: {}
+#     type:
+#     - object
+#   title: Create
+# - description: Delete an existing user.
+#   href: "/users/{(%2Fschemata%2Fuser%23%2Fdefinitions%2Fidentity)}"
+#   method: DELETE
+#   rel: destroy
+#   title: Delete
+# - description: Info for existing user.
+#   href: "/users/{(%2Fschemata%2Fuser%23%2Fdefinitions%2Fidentity)}"
+#   method: GET
+#   rel: self
+#   title: Info
+# - description: List existing users.
+#   href: "/users"
+#   method: GET
+#   rel: instances
+#   title: List
+# - description: Update an existing user.
+#   href: "/users/{(%2Fschemata%2Fuser%23%2Fdefinitions%2Fidentity)}"
+#   method: PATCH
+#   rel: update
+#   schema:
+#     properties: {}
+#     type:
+#     - object
+#   title: Update
+properties:
+  avatar_url:
+    "$ref": "/schemata/user#/definitions/avatar_url"
+  created_at:
+    "$ref": "/schemata/user#/definitions/created_at"
+  first_name:
+    "$ref": "/schemata/user#/definitions/first_name"
+  id:
+    "$ref": "/schemata/user#/definitions/id"
+  last_name:
+    "$ref": "/schemata/user#/definitions/last_name"
+  updated_at:
+    "$ref": "/schemata/user#/definitions/updated_at"
+type:
+- object
+id: schemata/user

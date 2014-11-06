@@ -1,0 +1,10 @@
+#!/bin/bash -e
+set -o pipefail
+
+message=${1:-"publish update"}
+
+bin/rake
+toc
+git add --all
+git commit -m "$message"
+git push
