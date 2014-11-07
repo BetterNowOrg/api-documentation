@@ -99,7 +99,7 @@ element that can be dereferenced to provide the full representation.
 
 
 ## Event
-An Event is something that takes place at a particular time and/or place. It could be a sporting event like the Copenhagen Marathon 2015, or a holiday like Christmas 2014
+An Event is something that takes place at a particular time and/or place. It could be a sporting event like the Copenhagen Marathon 2013, or a holiday like Christmas 2014
 
 ### Attributes
 | Name | Type | Description | Example |
@@ -113,7 +113,7 @@ An Event is something that takes place at a particular time and/or place. It cou
 | **html_url** | *uri* | The url to the Event page on BetterNow | `"https://www.betternow.org/dk/events/copenhagen-marathon-2013"` |
 | **id** | *string* | unique identifier of event | `1234567` |
 | **location:city** | *string* | The name of a city | `"København"` |
-| **name** | *string* | the name of the Event | `"Copenhagen Marathon 2014"` |
+| **name** | *string* | the name of the Event | `"Copenhagen Marathon 2013"` |
 | **logo_url** | *uri* | The logo for the Event | `"https://cdn.example.net/logo.png"` |
 | **updated_at** | *date-time* | when event was updated | `"2012-01-01T12:00:00Z"` |
 | **start_date** | *date-time* | The date when the Event starts | `"2012-01-01T12:00:00Z"` |
@@ -156,7 +156,7 @@ HTTP/1.1 200 OK
   "location": {
     "city": "København"
   },
-  "name": "Copenhagen Marathon 2014",
+  "name": "Copenhagen Marathon 2013",
   "logo_url": "https://cdn.example.net/logo.png",
   "updated_at": "2012-01-01T12:00:00Z",
   "start_date": "2012-01-01T12:00:00Z",
@@ -203,7 +203,7 @@ HTTP/1.1 200 OK
     "location": {
       "city": "København"
     },
-    "name": "Copenhagen Marathon 2014",
+    "name": "Copenhagen Marathon 2013",
     "logo_url": "https://cdn.example.net/logo.png",
     "updated_at": "2012-01-01T12:00:00Z",
     "start_date": "2012-01-01T12:00:00Z",

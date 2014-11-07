@@ -249,7 +249,7 @@
         },
         "name": {
           "description": "the name of the Event",
-          "example": "Copenhagen Marathon 2014",
+          "example": "Copenhagen Marathon 2013",
           "$ref": "#/definitions/common/definitions/name"
         },
         "description": {
@@ -311,7 +311,7 @@
           "$ref": "#/definitions/common/definitions/url"
         }
       },
-      "description": "An Event is something that takes place at a particular time and/or place. It could be a sporting event like the Copenhagen Marathon 2015, or a holiday like Christmas 2014",
+      "description": "An Event is something that takes place at a particular time and/or place. It could be a sporting event like the Copenhagen Marathon 2013, or a holiday like Christmas 2014",
       "links": [
         {
           "description": "Info for existing event.",

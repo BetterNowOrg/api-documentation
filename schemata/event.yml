@@ -15,7 +15,7 @@ definitions:
     "$ref": "/schemata/common#/definitions/updated_at"
   name:
     description: the name of the Event
-    example: "Copenhagen Marathon 2014"
+    example: "Copenhagen Marathon 2013"
     "$ref": "/schemata/common#/definitions/name"
   description:
     description: Text describing the Event added by the event organiser. Contains HTML.
@@ -60,7 +60,7 @@ definitions:
     description: The url on BetterNow for people who want to fundraise in connection with an event
     example: 'https://www.betternow.org/dk/fundraisers/new?event_id=1234567'
     "$ref": "/schemata/common#/definitions/url"
-description: An Event is something that takes place at a particular time and/or place. It could be a sporting event like the Copenhagen Marathon 2015, or a holiday like Christmas 2014
+description: An Event is something that takes place at a particular time and/or place. It could be a sporting event like the Copenhagen Marathon 2013, or a holiday like Christmas 2014
 links:
 - description: Info for existing event.
   href: "/events/{(%2Fschemata%2Fevent%23%2Fdefinitions%2Fidentity)}"
