@@ -6,7 +6,9 @@ definitions:
     description: Unique identifier of project
     "$ref": "/schemata/common#/definitions/id"
   identity:
-    "$ref": "/schemata/project#/definitions/id"
+    anyOf:
+      - "$ref": "/schemata/project#/definitions/id"
+      - "$ref": "/schemata/project#/definitions/slug"
   created_at:
     description: When project was created
     "$ref": "/schemata/common#/definitions/created_at"
@@ -71,6 +73,10 @@ definitions:
         description: The url to retrieve details on all donations made to this project
         example: 'https://api.betternow.org/projects/1234567/donations'
         "$ref": "/schemata/common#/definitions/url"
+  slug:
+    description: The current url path component to identify the project. This can, and does, change.
+    example: helpnow-project
+    "$ref": "/schemata/common#/definitions/slug"
 description: A Project is a specific cause that Users can Fundraise for. An Organisation typically has several Projects
 links:
 - description: Info for existing project.

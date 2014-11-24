@@ -6,7 +6,9 @@ definitions:
     description: unique identifier of team
     "$ref": "/schemata/common#/definitions/id"
   identity:
-    "$ref": "/schemata/team#/definitions/id"
+    anyOf:
+      - "$ref": "/schemata/team#/definitions/id"
+      - "$ref": "/schemata/team#/definitions/slug"
   created_at:
     description: when team was created
     "$ref": "/schemata/common#/definitions/created_at"
@@ -63,6 +65,10 @@ definitions:
     items:
       "$ref": "/schemata/fundraiser#/definitions/fundraiser_summary"
     type: array
+  logo_url:
+    description: The logo for the team
+    example: 'https://cdn.example.net/logo.png'
+    "$ref": "/schemata/common#/definitions/logo_url"
 description: A Team is a collection of Fundraisers, who may or may not be raising money in connection with a single Event.
 links:
 - description: Info for existing team.

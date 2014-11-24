@@ -6,7 +6,9 @@ definitions:
     description: unique identifier of event
     "$ref": "/schemata/common#/definitions/id"
   identity:
-    "$ref": "/schemata/event#/definitions/id"
+    anyOf:
+      - "$ref": "/schemata/event#/definitions/id"
+      - "$ref": "/schemata/event#/definitions/slug"
   created_at:
     description: when event was created
     "$ref": "/schemata/common#/definitions/created_at"
@@ -60,6 +62,10 @@ definitions:
     description: The url on BetterNow for people who want to fundraise in connection with an event
     example: 'https://www.betternow.org/dk/fundraisers/new?event_id=1234567'
     "$ref": "/schemata/common#/definitions/url"
+  slug:
+    description: The current url path component to identify the event. This can, and does, change.
+    example: cph-marathon-2013
+    "$ref": "/schemata/common#/definitions/slug"
 description: An Event is something that takes place at a particular time and/or place. It could be a sporting event like the Copenhagen Marathon 2013, or a holiday like Christmas 2014
 links:
 - description: Info for existing event.

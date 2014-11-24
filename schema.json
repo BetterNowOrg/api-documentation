@@ -237,7 +237,14 @@
           "$ref": "#/definitions/common/definitions/id"
         },
         "identity": {
-          "$ref": "#/definitions/event/definitions/id"
+          "anyOf": [
+            {
+              "$ref": "#/definitions/event/definitions/id"
+            },
+            {
+              "$ref": "#/definitions/event/definitions/slug"
+            }
+          ]
         },
         "created_at": {
           "description": "when event was created",
@@ -309,6 +316,11 @@
           "description": "The url on BetterNow for people who want to fundraise in connection with an event",
           "example": "https://www.betternow.org/dk/fundraisers/new?event_id=1234567",
           "$ref": "#/definitions/common/definitions/url"
+        },
+        "slug": {
+          "description": "The current url path component to identify the event. This can, and does, change.",
+          "example": "cph-marathon-2013",
+          "$ref": "#/definitions/common/definitions/slug"
         }
       },
       "description": "An Event is something that takes place at a particular time and/or place. It could be a sporting event like the Copenhagen Marathon 2013, or a holiday like Christmas 2014",
@@ -486,7 +498,14 @@
           "$ref": "#/definitions/common/definitions/id"
         },
         "identity": {
-          "$ref": "#/definitions/fundraiser/definitions/id"
+          "anyOf": [
+            {
+              "$ref": "#/definitions/fundraiser/definitions/id"
+            },
+            {
+              "$ref": "#/definitions/fundraiser/definitions/slug"
+            }
+          ]
         },
         "recipient": {
           "description": "The organisation that will receive the donation",
@@ -640,7 +659,14 @@
           "$ref": "#/definitions/common/definitions/id"
         },
         "identity": {
-          "$ref": "#/definitions/organisation/definitions/id"
+          "anyOf": [
+            {
+              "$ref": "#/definitions/organisation/definitions/id"
+            },
+            {
+              "$ref": "#/definitions/organisation/definitions/slug"
+            }
+          ]
         },
         "created_at": {
           "description": "When organisation was created",
@@ -728,6 +754,11 @@
         "cover_media": {
           "description": "The image or video to be displayed for this Organisation. On the BetterNow site, if a video is present it takes precedence.",
           "$ref": "#/definitions/common/definitions/cover_media"
+        },
+        "slug": {
+          "description": "The current url path component to identify the organisation. This can, and does, change.",
+          "example": "msf",
+          "$ref": "#/definitions/common/definitions/slug"
         }
       },
       "description": "An Organisation can receive Donations on BetterNow",
@@ -833,7 +864,14 @@
           "$ref": "#/definitions/common/definitions/id"
         },
         "identity": {
-          "$ref": "#/definitions/project/definitions/id"
+          "anyOf": [
+            {
+              "$ref": "#/definitions/project/definitions/id"
+            },
+            {
+              "$ref": "#/definitions/project/definitions/slug"
+            }
+          ]
         },
         "created_at": {
           "description": "When project was created",
@@ -924,6 +962,11 @@
               "$ref": "#/definitions/common/definitions/url"
             }
           }
+        },
+        "slug": {
+          "description": "The current url path component to identify the project. This can, and does, change.",
+          "example": "helpnow-project",
+          "$ref": "#/definitions/common/definitions/slug"
         }
       },
       "description": "A Project is a specific cause that Users can Fundraise for. An Organisation typically has several Projects",
@@ -1008,7 +1051,14 @@
           "$ref": "#/definitions/common/definitions/id"
         },
         "identity": {
-          "$ref": "#/definitions/team/definitions/id"
+          "anyOf": [
+            {
+              "$ref": "#/definitions/team/definitions/id"
+            },
+            {
+              "$ref": "#/definitions/team/definitions/slug"
+            }
+          ]
         },
         "created_at": {
           "description": "when team was created",
@@ -1019,7 +1069,7 @@
           "$ref": "#/definitions/common/definitions/updated_at"
         },
         "logo_url": {
-          "description": "The logo for the Team",
+          "description": "The logo for the team",
           "example": "https://cdn.example.net/logo.png",
           "$ref": "#/definitions/common/definitions/logo_url"
         },

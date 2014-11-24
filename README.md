@@ -15,26 +15,7 @@ The design of our API is heavily informed by [Heroku's HTTP API Design
 Guide](https://github.com/interagent/http-api-design) and their [Platform
 API](https://devcenter.heroku.com/articles/platform-api-reference)
 
-
-
 <!-- toc -->
-
-* [Authentication](#authentication)
-* [Caching](#caching)
-* [Clients](#clients)
-* [CORS](#cors)
-* [Rate Limits](#rate-limits)
-* [Pagination via Ranges](#pagination-via-ranges)
-* [JSON Schema](#json-schema)
-* ["Summary" vs. "Full" representations](#summary-vs-full-representations)
-* [Event](#event)
-* [Fundraising Page](#fundraising-page)
-* [Organisation](#organisation)
-* [Project](#project)
-* [Team](#team)
-
-<!-- toc stop -->
-
 
 ## Authentication
 
@@ -122,13 +103,13 @@ An Event is something that takes place at a particular time and/or place. It cou
 Info for existing event.
 
 ```
-GET /events/{event_id}
+GET /events/{event_id_or_slug}
 ```
 
 
 #### Curl Example
 ```bash
-$ curl -n -X GET https://api.betternow.org/events/$EVENT_ID
+$ curl -n -X GET https://api.betternow.org/events/$EVENT_ID_OR_SLUG
 
 ```
 
@@ -216,13 +197,13 @@ HTTP/1.1 200 OK
 List all Projects associated with an Event
 
 ```
-GET /events/{event_id}/projects
+GET /events/{event_id_or_slug}/projects
 ```
 
 
 #### Curl Example
 ```bash
-$ curl -n -X GET https://api.betternow.org/events/$EVENT_ID/projects
+$ curl -n -X GET https://api.betternow.org/events/$EVENT_ID_OR_SLUG/projects
 
 ```
 
@@ -267,13 +248,13 @@ HTTP/1.1 200 OK
 List all Fundraisers associated with an Event
 
 ```
-GET /events/{event_id}/fundraisers
+GET /events/{event_id_or_slug}/fundraisers
 ```
 
 
 #### Curl Example
 ```bash
-$ curl -n -X GET https://api.betternow.org/events/$EVENT_ID/fundraisers
+$ curl -n -X GET https://api.betternow.org/events/$EVENT_ID_OR_SLUG/fundraisers
 
 ```
 
@@ -335,13 +316,13 @@ HTTP/1.1 200 OK
 List all Teams associated with an Event
 
 ```
-GET /events/{event_id}/teams
+GET /events/{event_id_or_slug}/teams
 ```
 
 
 #### Curl Example
 ```bash
-$ curl -n -X GET https://api.betternow.org/events/$EVENT_ID/teams
+$ curl -n -X GET https://api.betternow.org/events/$EVENT_ID_OR_SLUG/teams
 
 ```
 
@@ -432,13 +413,13 @@ Detailed information about a single Fundraising Page on BetterNow.org
 Info for existing fundraiser.
 
 ```
-GET /fundraisers/{fundraiser_id}
+GET /fundraisers/{fundraiser_id_or_slug}
 ```
 
 
 #### Curl Example
 ```bash
-$ curl -n -X GET https://api.betternow.org/fundraisers/$FUNDRAISER_ID
+$ curl -n -X GET https://api.betternow.org/fundraisers/$FUNDRAISER_ID_OR_SLUG
 
 ```
 
@@ -566,13 +547,13 @@ HTTP/1.1 200 OK
 List the donations for existing fundraiser. Donations will always be returned in reverse-chronological order (newest first).
 
 ```
-GET /fundraisers/{fundraiser_id}/donations
+GET /fundraisers/{fundraiser_id_or_slug}/donations
 ```
 
 
 #### Curl Example
 ```bash
-$ curl -n -X GET https://api.betternow.org/fundraisers/$FUNDRAISER_ID/donations
+$ curl -n -X GET https://api.betternow.org/fundraisers/$FUNDRAISER_ID_OR_SLUG/donations
 
 ```
 
@@ -626,13 +607,13 @@ An Organisation can receive Donations on BetterNow
 Info for existing organisation.
 
 ```
-GET /organisations/{organisation_id}
+GET /organisations/{organisation_id_or_slug}
 ```
 
 
 #### Curl Example
 ```bash
-$ curl -n -X GET https://api.betternow.org/organisations/$ORGANISATION_ID
+$ curl -n -X GET https://api.betternow.org/organisations/$ORGANISATION_ID_OR_SLUG
 
 ```
 
@@ -692,13 +673,13 @@ HTTP/1.1 200 OK
 List all Projects for an existing Organisation. Projects will be ordered by activity score, descending.
 
 ```
-GET /organisations/{organisation_id}/projects
+GET /organisations/{organisation_id_or_slug}/projects
 ```
 
 
 #### Curl Example
 ```bash
-$ curl -n -X GET https://api.betternow.org/organisations/$ORGANISATION_ID/projects
+$ curl -n -X GET https://api.betternow.org/organisations/$ORGANISATION_ID_OR_SLUG/projects
 
 ```
 
@@ -743,13 +724,13 @@ HTTP/1.1 200 OK
 List all Fundraisers for an existing Organisation. Fundraisers will be ordered by activity score, descending.
 
 ```
-GET /organisations/{organisation_id}/fundraisers
+GET /organisations/{organisation_id_or_slug}/fundraisers
 ```
 
 
 #### Curl Example
 ```bash
-$ curl -n -X GET https://api.betternow.org/organisations/$ORGANISATION_ID/fundraisers
+$ curl -n -X GET https://api.betternow.org/organisations/$ORGANISATION_ID_OR_SLUG/fundraisers
 
 ```
 
@@ -811,13 +792,13 @@ HTTP/1.1 200 OK
 List the donations for an existing Organisation. Donations will always be returned in reverse-chronological order (newest first).
 
 ```
-GET /organisations/{organisation_id}/donations
+GET /organisations/{organisation_id_or_slug}/donations
 ```
 
 
 #### Curl Example
 ```bash
-$ curl -n -X GET https://api.betternow.org/organisations/$ORGANISATION_ID/donations
+$ curl -n -X GET https://api.betternow.org/organisations/$ORGANISATION_ID_OR_SLUG/donations
 
 ```
 
@@ -867,13 +848,13 @@ A Project is a specific cause that Users can Fundraise for. An Organisation typi
 Info for existing project.
 
 ```
-GET /projects/{project_id}
+GET /projects/{project_id_or_slug}
 ```
 
 
 #### Curl Example
 ```bash
-$ curl -n -X GET https://api.betternow.org/projects/$PROJECT_ID
+$ curl -n -X GET https://api.betternow.org/projects/$PROJECT_ID_OR_SLUG
 
 ```
 
@@ -916,13 +897,13 @@ HTTP/1.1 200 OK
 List all Fundraisers for an existing Project. Fundraisers will be ordered by activity score, descending.
 
 ```
-GET /projects/{project_id}/fundraisers
+GET /projects/{project_id_or_slug}/fundraisers
 ```
 
 
 #### Curl Example
 ```bash
-$ curl -n -X GET https://api.betternow.org/projects/$PROJECT_ID/fundraisers
+$ curl -n -X GET https://api.betternow.org/projects/$PROJECT_ID_OR_SLUG/fundraisers
 
 ```
 
@@ -984,13 +965,13 @@ HTTP/1.1 200 OK
 List the donations for existing project. Donations will always be returned in reverse-chronological order (newest first).
 
 ```
-GET /projects/{project_id}/donations
+GET /projects/{project_id_or_slug}/donations
 ```
 
 
 #### Curl Example
 ```bash
-$ curl -n -X GET https://api.betternow.org/projects/$PROJECT_ID/donations
+$ curl -n -X GET https://api.betternow.org/projects/$PROJECT_ID_OR_SLUG/donations
 
 ```
 
@@ -1036,7 +1017,7 @@ A Team is a collection of Fundraisers, who may or may not be raising money in co
 | **fundraisers** | *array* | An array of summarized fundraisers, ordered by total donated, descending | `[{"id"=>1234567, "headline"=>"Firstname Lastname's Fundraiser for HelpNow", "url"=>"https://api.betternow.org/fundraisers/1234567", "html_url"=>"https://www.betternow.org/dk/firstname-lastnames-fundraiser-for-helpnow"}]` |
 | **html_url** | *uri* | The url to the Team page on BetterNow | `"https://www.betternow.org/dk/teams/team-novo"` |
 | **id** | *string* | unique identifier of team | `1234567` |
-| **logo_url** | *uri* | The logo for the Team | `"https://cdn.example.net/logo.png"` |
+| **logo_url** | *uri* | The logo for the team | `"https://cdn.example.net/logo.png"` |
 | **name** | *string* | the name of the Team | `"Team NOVO"` |
 | **slug** | *string* | The current url path component to identify the team. This can, and does, change.<br/> **pattern:** <code>^([a-z0-9-]{2,})$</code> | `"team-novo"` |
 | **updated_at** | *date-time* | when team was updated | `"2012-01-01T12:00:00Z"` |
@@ -1045,13 +1026,13 @@ A Team is a collection of Fundraisers, who may or may not be raising money in co
 Info for existing team.
 
 ```
-GET /teams/{team_id}
+GET /teams/{team_id_or_slug}
 ```
 
 
 #### Curl Example
 ```bash
-$ curl -n -X GET https://api.betternow.org/teams/$TEAM_ID
+$ curl -n -X GET https://api.betternow.org/teams/$TEAM_ID_OR_SLUG
 
 ```
 
@@ -1171,13 +1152,13 @@ HTTP/1.1 200 OK
 List all Fundraisers that are members of this Team. Fundraisers will be ordered by the amount of money donated, descending
 
 ```
-GET /teams/{team_id}/fundraisers
+GET /teams/{team_id_or_slug}/fundraisers
 ```
 
 
 #### Curl Example
 ```bash
-$ curl -n -X GET https://api.betternow.org/teams/$TEAM_ID/fundraisers
+$ curl -n -X GET https://api.betternow.org/teams/$TEAM_ID_OR_SLUG/fundraisers
 
 ```
 
@@ -1239,13 +1220,13 @@ HTTP/1.1 200 OK
 List all donations given via this Team
 
 ```
-GET /teams/{team_id}/donations
+GET /teams/{team_id_or_slug}/donations
 ```
 
 
 #### Curl Example
 ```bash
-$ curl -n -X GET https://api.betternow.org/teams/$TEAM_ID/donations
+$ curl -n -X GET https://api.betternow.org/teams/$TEAM_ID_OR_SLUG/donations
 
 ```
 
@@ -1274,13 +1255,13 @@ HTTP/1.1 200 OK
 List all Projects that team members are fundraising for
 
 ```
-GET /teams/{team_id}/projects
+GET /teams/{team_id_or_slug}/projects
 ```
 
 
 #### Curl Example
 ```bash
-$ curl -n -X GET https://api.betternow.org/teams/$TEAM_ID/projects
+$ curl -n -X GET https://api.betternow.org/teams/$TEAM_ID_OR_SLUG/projects
 
 ```
 
@@ -1320,3 +1301,6 @@ HTTP/1.1 200 OK
   }
 ]
 ```
+
+
+

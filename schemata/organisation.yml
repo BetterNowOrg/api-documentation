@@ -6,7 +6,9 @@ definitions:
     description: Unique identifier of organisation
     "$ref": "/schemata/common#/definitions/id"
   identity:
-    "$ref": "/schemata/organisation#/definitions/id"
+    anyOf:
+      - "$ref": "/schemata/organisation#/definitions/id"
+      - "$ref": "/schemata/organisation#/definitions/slug"
   created_at:
     description: When organisation was created
     "$ref": "/schemata/common#/definitions/created_at"
@@ -69,6 +71,10 @@ definitions:
   cover_media:
     description: The image or video to be displayed for this Organisation. On the BetterNow site, if a video is present it takes precedence.
     "$ref": "/schemata/common#/definitions/cover_media"
+  slug:
+    description: The current url path component to identify the organisation. This can, and does, change.
+    example: msf
+    "$ref": "/schemata/common#/definitions/slug"
 description: An Organisation can receive Donations on BetterNow
 links:
 - description: Info for existing organisation.

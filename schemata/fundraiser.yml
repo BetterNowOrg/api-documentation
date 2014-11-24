@@ -56,7 +56,9 @@ definitions:
     description: The unique identifier of the fundraising page
     "$ref": "/schemata/common#/definitions/id"
   identity:
-    "$ref": "/schemata/fundraiser#/definitions/id"
+    anyOf:
+      - "$ref": "/schemata/fundraiser#/definitions/id"
+      - "$ref": "/schemata/fundraiser#/definitions/slug"
   recipient:
     description: The organisation that will receive the donation
     type:
