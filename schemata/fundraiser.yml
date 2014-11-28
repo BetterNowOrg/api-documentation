@@ -60,18 +60,7 @@ definitions:
       - "$ref": "/schemata/fundraiser#/definitions/id"
       - "$ref": "/schemata/fundraiser#/definitions/slug"
   recipient:
-    description: The organisation that will receive the donation
-    type:
-      - object
-    properties:
-      id:
-        "$ref": "/schemata/organisation#/definitions/id"
-      name:
-        "$ref": "/schemata/organisation#/definitions/name"
-      url:
-        "$ref": "/schemata/organisation#/definitions/url"
-      html_url:
-        "$ref": "/schemata/organisation#/definitions/html_url"
+    "$ref": "/schemata/common#/definitions/recipient"
   slug:
     description: The current url path component to identify the fundraiser. This can, and does, change.
     example: firstname-lastnames-fundraiser-for-helpnow

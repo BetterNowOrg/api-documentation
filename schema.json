@@ -125,6 +125,26 @@
         },
         "logo_url": {
           "$ref": "#/definitions/common/definitions/url"
+        },
+        "recipient": {
+          "description": "The organisation that will receive the donation",
+          "type": [
+            "object"
+          ],
+          "properties": {
+            "id": {
+              "$ref": "#/definitions/organisation/definitions/id"
+            },
+            "name": {
+              "$ref": "#/definitions/organisation/definitions/name"
+            },
+            "url": {
+              "$ref": "#/definitions/organisation/definitions/url"
+            },
+            "html_url": {
+              "$ref": "#/definitions/organisation/definitions/html_url"
+            }
+          }
         }
       },
       "description": "Common definitions used by multiple resources",
@@ -508,24 +528,7 @@
           ]
         },
         "recipient": {
-          "description": "The organisation that will receive the donation",
-          "type": [
-            "object"
-          ],
-          "properties": {
-            "id": {
-              "$ref": "#/definitions/organisation/definitions/id"
-            },
-            "name": {
-              "$ref": "#/definitions/organisation/definitions/name"
-            },
-            "url": {
-              "$ref": "#/definitions/organisation/definitions/url"
-            },
-            "html_url": {
-              "$ref": "#/definitions/organisation/definitions/html_url"
-            }
-          }
+          "$ref": "#/definitions/common/definitions/recipient"
         },
         "slug": {
           "description": "The current url path component to identify the fundraiser. This can, and does, change.",
@@ -859,6 +862,13 @@
       "$schema": "http://json-schema.org/draft-04/hyper-schema",
       "title": "Project",
       "definitions": {
+        "activity_score": {
+          "description": "A number that can be used for sorting lists of campaigns. More recently active campaigins should have a higher activity score than campaigins who have raised more money long ago.",
+          "example": 987654321,
+          "type": [
+            "integer"
+          ]
+        },
         "id": {
           "description": "Unique identifier of project",
           "$ref": "#/definitions/common/definitions/id"
@@ -967,6 +977,12 @@
           "description": "The current url path component to identify the project. This can, and does, change.",
           "example": "helpnow-project",
           "$ref": "#/definitions/common/definitions/slug"
+        },
+        "cover_media": {
+          "$ref": "#/definitions/common/definitions/cover_media"
+        },
+        "recipient": {
+          "$ref": "#/definitions/common/definitions/recipient"
         }
       },
       "description": "A Project is a specific cause that Users can Fundraise for. An Organisation typically has several Projects",
@@ -1004,6 +1020,12 @@
         }
       ],
       "properties": {
+        "activity_score": {
+          "$ref": "#/definitions/project/definitions/activity_score"
+        },
+        "cover_media": {
+          "$ref": "#/definitions/project/definitions/cover_media"
+        },
         "created_at": {
           "$ref": "#/definitions/project/definitions/created_at"
         },
@@ -1036,6 +1058,12 @@
         },
         "url": {
           "$ref": "#/definitions/project/definitions/url"
+        },
+        "recipient": {
+          "$ref": "#/definitions/project/definitions/recipient"
+        },
+        "slug": {
+          "$ref": "#/definitions/project/definitions/slug"
         }
       },
       "type": [

@@ -274,6 +274,15 @@ HTTP/1.1 200 OK
 ```json
 [
   {
+    "activity_score": 987654321,
+    "cover_media": {
+      "image": {
+        "url": "https://cnd.example.net/image.jpg"
+      },
+      "video": {
+        "url": "https://youtu.be/12345"
+      }
+    },
     "created_at": "2012-01-01T12:00:00Z",
     "description": "We need your money for this <b>GREAT</b> project",
     "donations": {
@@ -298,7 +307,14 @@ HTTP/1.1 200 OK
     "name": "HelpNows generelle arbejde",
     "new_fundraiser_url": "https://www.betternow.org/dk/projects/helpnow-projekt/fundraisers/new",
     "updated_at": "2012-01-01T12:00:00Z",
-    "url": "https://api.betternow.org/projects/1234567"
+    "url": "https://api.betternow.org/projects/1234567",
+    "recipient": {
+      "id": 1234567,
+      "name": "HelpNow",
+      "url": "https://api.betternow.org/organisations/1234567",
+      "html_url": "https://www.betternow.org/dk/helpnow"
+    },
+    "slug": "helpnow-project"
   }
 ]
 ```
@@ -750,6 +766,15 @@ HTTP/1.1 200 OK
 ```json
 [
   {
+    "activity_score": 987654321,
+    "cover_media": {
+      "image": {
+        "url": "https://cnd.example.net/image.jpg"
+      },
+      "video": {
+        "url": "https://youtu.be/12345"
+      }
+    },
     "created_at": "2012-01-01T12:00:00Z",
     "description": "We need your money for this <b>GREAT</b> project",
     "donations": {
@@ -774,7 +799,14 @@ HTTP/1.1 200 OK
     "name": "HelpNows generelle arbejde",
     "new_fundraiser_url": "https://www.betternow.org/dk/projects/helpnow-projekt/fundraisers/new",
     "updated_at": "2012-01-01T12:00:00Z",
-    "url": "https://api.betternow.org/projects/1234567"
+    "url": "https://api.betternow.org/projects/1234567",
+    "recipient": {
+      "id": 1234567,
+      "name": "HelpNow",
+      "url": "https://api.betternow.org/organisations/1234567",
+      "html_url": "https://www.betternow.org/dk/helpnow"
+    },
+    "slug": "helpnow-project"
   }
 ]
 ```
@@ -889,6 +921,9 @@ A Project is a specific cause that Users can Fundraise for. An Organisation typi
 ### Attributes
 | Name | Type | Description | Example |
 | ------- | ------- | ------- | ------- |
+| **activity_score** | *integer* | A number that can be used for sorting lists of campaigns. More recently active campaigins should have a higher activity score than campaigins who have raised more money long ago. | `987654321` |
+| **cover_media:image:url** | *uri* | The url for the image. On the BetterNow site, the video takes precedence if both exist. | `"https://cnd.example.net/image.jpg"` |
+| **cover_media:video:url** | *uri* | The url for the video. Currently only YouTube and Vimeo are supported. Could be blank. | `"https://youtu.be/12345"` |
 | **created_at** | *date-time* | When project was created | `"2012-01-01T12:00:00Z"` |
 | **description** | *string* | The text written by the Project's administrators. Contains HTML | `"We need your money for this <b>GREAT</b> project"` |
 | **donations:count** | *integer* | The count of all donations made to this project | `123` |
@@ -903,6 +938,11 @@ A Project is a specific cause that Users can Fundraise for. An Organisation typi
 | **new_fundraiser_url** | *uri* | The current url to create a new Fundraiser for this project on BetterNow. This can, and does, change. Requests to old urls will redirect to the current url. | `"https://www.betternow.org/dk/projects/helpnow-projekt/fundraisers/new"` |
 | **updated_at** | *date-time* | When project was updated | `"2012-01-01T12:00:00Z"` |
 | **url** | *uri* |  | `"https://api.betternow.org/projects/1234567"` |
+| **recipient:id** | *string* | Unique identifier of organisation | `1234567` |
+| **recipient:name** | *string* | The name of the Organisation | `"HelpNow"` |
+| **recipient:url** | *uri* |  | `"https://api.betternow.org/organisations/1234567"` |
+| **recipient:html_url** | *uri* | The current url to view the organisation page on BetterNow. This can, and does, change. Requests to old urls will be redirect to the current url. | `"https://www.betternow.org/dk/helpnow"` |
+| **slug** | *string* | The current url path component to identify the project. This can, and does, change.<br/> **pattern:** <code>^([a-z0-9-]{2,})$</code> | `"helpnow-project"` |
 ### Project Info
 Info for existing project.
 
@@ -924,6 +964,15 @@ HTTP/1.1 200 OK
 ```
 ```json
 {
+  "activity_score": 987654321,
+  "cover_media": {
+    "image": {
+      "url": "https://cnd.example.net/image.jpg"
+    },
+    "video": {
+      "url": "https://youtu.be/12345"
+    }
+  },
   "created_at": "2012-01-01T12:00:00Z",
   "description": "We need your money for this <b>GREAT</b> project",
   "donations": {
@@ -948,7 +997,14 @@ HTTP/1.1 200 OK
   "name": "HelpNows generelle arbejde",
   "new_fundraiser_url": "https://www.betternow.org/dk/projects/helpnow-projekt/fundraisers/new",
   "updated_at": "2012-01-01T12:00:00Z",
-  "url": "https://api.betternow.org/projects/1234567"
+  "url": "https://api.betternow.org/projects/1234567",
+  "recipient": {
+    "id": 1234567,
+    "name": "HelpNow",
+    "url": "https://api.betternow.org/organisations/1234567",
+    "html_url": "https://www.betternow.org/dk/helpnow"
+  },
+  "slug": "helpnow-project"
 }
 ```
 
@@ -1332,6 +1388,15 @@ HTTP/1.1 200 OK
 ```json
 [
   {
+    "activity_score": 987654321,
+    "cover_media": {
+      "image": {
+        "url": "https://cnd.example.net/image.jpg"
+      },
+      "video": {
+        "url": "https://youtu.be/12345"
+      }
+    },
     "created_at": "2012-01-01T12:00:00Z",
     "description": "We need your money for this <b>GREAT</b> project",
     "donations": {
@@ -1356,7 +1421,14 @@ HTTP/1.1 200 OK
     "name": "HelpNows generelle arbejde",
     "new_fundraiser_url": "https://www.betternow.org/dk/projects/helpnow-projekt/fundraisers/new",
     "updated_at": "2012-01-01T12:00:00Z",
-    "url": "https://api.betternow.org/projects/1234567"
+    "url": "https://api.betternow.org/projects/1234567",
+    "recipient": {
+      "id": 1234567,
+      "name": "HelpNow",
+      "url": "https://api.betternow.org/organisations/1234567",
+      "html_url": "https://www.betternow.org/dk/helpnow"
+    },
+    "slug": "helpnow-project"
   }
 ]
 ```

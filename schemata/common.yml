@@ -85,6 +85,19 @@ definitions:
       - string
   logo_url:
     "$ref": "/schemata/common#/definitions/url"
+  recipient:
+    description: The organisation that will receive the donation
+    type:
+      - object
+    properties:
+      id:
+        "$ref": "/schemata/organisation#/definitions/id"
+      name:
+        "$ref": "/schemata/organisation#/definitions/name"
+      url:
+        "$ref": "/schemata/organisation#/definitions/url"
+      html_url:
+        "$ref": "/schemata/organisation#/definitions/html_url"
 description: Common definitions used by multiple resources
 type:
 - object

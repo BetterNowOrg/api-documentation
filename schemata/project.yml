@@ -2,6 +2,11 @@
 "$schema": http://json-schema.org/draft-04/hyper-schema
 title: Project
 definitions:
+  activity_score:
+    description: A number that can be used for sorting lists of campaigns. More recently active campaigins should have a higher activity score than campaigins who have raised more money long ago.
+    example: 987654321
+    type:
+      - integer
   id:
     description: Unique identifier of project
     "$ref": "/schemata/common#/definitions/id"
@@ -77,6 +82,10 @@ definitions:
     description: The current url path component to identify the project. This can, and does, change.
     example: helpnow-project
     "$ref": "/schemata/common#/definitions/slug"
+  cover_media:
+    "$ref": "/schemata/common#/definitions/cover_media"
+  recipient:
+    "$ref": "/schemata/common#/definitions/recipient"
 description: A Project is a specific cause that Users can Fundraise for. An Organisation typically has several Projects
 links:
 - description: Info for existing project.
@@ -101,6 +110,10 @@ links:
     items:
       "$ref": "/schemata/donation"
 properties:
+  activity_score:
+    "$ref": "/schemata/project#/definitions/activity_score"
+  cover_media:
+    "$ref": "/schemata/project#/definitions/cover_media"
   created_at:
     "$ref": "/schemata/project#/definitions/created_at"
   description:
@@ -123,6 +136,10 @@ properties:
     "$ref": "/schemata/project#/definitions/updated_at"
   url:
     "$ref": "/schemata/project#/definitions/url"
+  recipient:
+    "$ref": "/schemata/project#/definitions/recipient"
+  slug:
+    "$ref": "/schemata/project#/definitions/slug"
 type:
 - object
 id: schemata/project
