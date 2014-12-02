@@ -699,12 +699,24 @@
           "$ref": "#/definitions/common/definitions/description"
         },
         "projects": {
-          "items": {
-            "$ref": "#/definitions/project/definitions/project_summary"
-          },
+          "description": "Information about this organisation's projects",
           "type": [
-            "array"
-          ]
+            "object"
+          ],
+          "properties": {
+            "count": {
+              "description": "The count of the organisation's active projects",
+              "example": 12,
+              "type": [
+                "integer"
+              ]
+            },
+            "url": {
+              "example": "https://api.betternow.org/organisations/1234567/projects",
+              "description": "The url to retrieve details about this organisation's projects",
+              "$ref": "#/definitions/project/definitions/url"
+            }
+          }
         },
         "donate_url": {
           "description": "The current url to donate directly to the organisation on BetterNow. This can, and does, change. Requests to old urls will be redirect to the current url.",
@@ -741,13 +753,24 @@
           }
         },
         "fundraisers": {
-          "description": "An array of summarized fundraisers",
-          "items": {
-            "$ref": "#/definitions/fundraiser/definitions/fundraiser_summary"
-          },
+          "description": "Information about the fundraisers for this organisation",
           "type": [
-            "array"
-          ]
+            "object"
+          ],
+          "properties": {
+            "count": {
+              "description": "The number of active fundraisers",
+              "example": 12,
+              "type": [
+                "integer"
+              ]
+            },
+            "url": {
+              "description": "The url to retrieve all fundraisers",
+              "example": "https://api.betternow.org/organisations/1234567/fundraisers",
+              "$ref": "#/definitions/common/definitions/url"
+            }
+          }
         },
         "logo_url": {
           "description": "The logo for the Organisation",
@@ -911,13 +934,24 @@
           "$ref": "#/definitions/common/definitions/html_url"
         },
         "fundraisers": {
-          "description": "An array of summarized fundraisers",
-          "items": {
-            "$ref": "#/definitions/fundraiser/definitions/fundraiser_summary"
-          },
+          "description": "Information about the fundraisers for this project",
           "type": [
-            "array"
-          ]
+            "object"
+          ],
+          "properties": {
+            "count": {
+              "description": "The number of active fundraisers",
+              "example": 12,
+              "type": [
+                "integer"
+              ]
+            },
+            "url": {
+              "description": "The url to retrieve all fundraisers",
+              "example": "https://api.betternow.org/projects/1234567/fundraisers",
+              "$ref": "#/definitions/common/definitions/url"
+            }
+          }
         },
         "project_summary": {
           "description": "A summarized version of the Project for use in other resources",
@@ -1157,13 +1191,24 @@
           "$ref": "#/definitions/common/definitions/slug"
         },
         "fundraisers": {
-          "description": "An array of summarized fundraisers, ordered by total donated, descending",
-          "items": {
-            "$ref": "#/definitions/fundraiser/definitions/fundraiser_summary"
-          },
+          "description": "Information about the fundraisers that are members of this team",
           "type": [
-            "array"
-          ]
+            "object"
+          ],
+          "properties": {
+            "count": {
+              "description": "The number of active fundraisers",
+              "example": 12,
+              "type": [
+                "integer"
+              ]
+            },
+            "url": {
+              "description": "The url to retrieve all fundraisers",
+              "example": "https://api.betternow.org/teams/1234567/fundraisers",
+              "$ref": "#/definitions/common/definitions/url"
+            }
+          }
         }
       },
       "description": "A Team is a collection of Fundraisers, who may or may not be raising money in connection with a single Event.",

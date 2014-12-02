@@ -15,27 +15,7 @@ The design of our API is heavily informed by [Heroku's HTTP API Design
 Guide](https://github.com/interagent/http-api-design) and their [Platform
 API](https://devcenter.heroku.com/articles/platform-api-reference)
 
-
-
 <!-- toc -->
-
-* [Authentication](#authentication)
-* [Caching](#caching)
-* [Clients](#clients)
-* [CORS](#cors)
-* [Rate Limits](#rate-limits)
-* [Pagination via Ranges](#pagination-via-ranges)
-* [JSON Schema](#json-schema)
-* ["Summary" vs. "Full" representations](#summary-vs-full-representations)
-* [Example Usage](#example-usage)
-* [Event](#event)
-* [Fundraising Page](#fundraising-page)
-* [Organisation](#organisation)
-* [Project](#project)
-* [Team](#team)
-
-<!-- toc stop -->
-
 
 ## Authentication
 
@@ -46,6 +26,9 @@ The API key must be Base64 encoded and passed as a `Bearer` token in the
 `Authorization` header. E.g., if my API key was
 `938a145dd2674b83f05de469a4efcdc52828960f`, the authorization header would be
 `Authorization: Bearer OTM4YTE0NWRkMjY3NGI4M2YwNWRlNDY5YTRlZmNkYzUyODI4OTYwZg==`
+
+API keys will be scoped to specific top-level resources. Authenticated requests
+for other resources will return a `403 Forbidden` response.
 
 ## Caching
 
@@ -64,8 +47,8 @@ clients should specify a User-Agent header to facilitate tracking and debugging.
 
 ## CORS
 
-BetterNow will configure cross-origin resource sharing (CORS) for your domain
-upon request to [support@betternow.org](mailto:support@betternow.org).
+The API fully supports cross-origin resource sharing (CORS) to enable
+browser-based clients.
 
 ## Rate Limits
 
@@ -89,12 +72,13 @@ schema to test and stub a local version of the api when you're developing your
 client. I'm sure there are other tools for other languages - feel free to submit
 a PR to add links for them.
 
-## "Summary" vs. "Full" representations
+## "Sub-resources"
 
-When resources are embedded in other resources (e.g. a list of projects embedded
-in an organisation), they will often be represented as "summarized" versions of
-the embedded resource. Summary representations will always include an `url`
-element that can be dereferenced to provide the full representation.
+When resources are related to other resources (e.g. a list of projects embedded
+in an organisation), they will be represented as a reference to an url that can
+be dereferenced to return a list of the embedded resources. Clients should
+prefer following the url included in the parent resource rather then
+constructing their own urls.
 
 ## Example Usage
 ```
@@ -296,14 +280,10 @@ HTTP/1.1 200 OK
     "donate_url": "https://www.betternow.org/dk/fundraisers/helpnow-indsamling21/donations/new",
     "html_url": "https://www.betternow.org/dk/helpnow-projekt",
     "id": 1234567,
-    "fundraisers": [
-      {
-        "id": 1234567,
-        "headline": "Firstname Lastname's Fundraiser for HelpNow",
-        "url": "https://api.betternow.org/fundraisers/1234567",
-        "html_url": "https://www.betternow.org/dk/firstname-lastnames-fundraiser-for-helpnow"
-      }
-    ],
+    "fundraisers": {
+      "count": 12,
+      "url": "https://api.betternow.org/projects/1234567/fundraisers"
+    },
     "name": "HelpNows generelle arbejde",
     "new_fundraiser_url": "https://www.betternow.org/dk/projects/helpnow-projekt/fundraisers/new",
     "updated_at": "2012-01-01T12:00:00Z",
@@ -432,14 +412,10 @@ HTTP/1.1 200 OK
       },
       "url": "https://api.betternow.org/teams/1234567/donations"
     },
-    "fundraisers": [
-      {
-        "id": 1234567,
-        "headline": "Firstname Lastname's Fundraiser for HelpNow",
-        "url": "https://api.betternow.org/fundraisers/1234567",
-        "html_url": "https://www.betternow.org/dk/firstname-lastnames-fundraiser-for-helpnow"
-      }
-    ],
+    "fundraisers": {
+      "count": 12,
+      "url": "https://api.betternow.org/teams/1234567/fundraisers"
+    },
     "html_url": "https://www.betternow.org/dk/teams/team-novo",
     "id": 1234567,
     "logo_url": "https://cdn.example.net/logo.png",
@@ -669,13 +645,15 @@ An Organisation can receive Donations on BetterNow
 | **donations:total_donated:currency** | *string* | 3 character currency code, as specified in ISO 4217<br/> **pattern:** <code>^([A-Z]{3})$</code> | `"EUR"` |
 | **donations:url** | *uri* | The url to retrieve details on all donations made to this organisation | `"https://api.betternow.org/organisations/1234567/donations"` |
 | **donate_url** | *uri* | The current url to donate directly to the organisation on BetterNow. This can, and does, change. Requests to old urls will be redirect to the current url. | `"https://www.betternow.org/dk/fundraisers/helpnow-indsamling1/donations/new"` |
-| **fundraisers** | *array* | An array of summarized fundraisers | `[{"id"=>1234567, "headline"=>"Firstname Lastname's Fundraiser for HelpNow", "url"=>"https://api.betternow.org/fundraisers/1234567", "html_url"=>"https://www.betternow.org/dk/firstname-lastnames-fundraiser-for-helpnow"}]` |
+| **fundraisers:count** | *integer* | The number of active fundraisers | `12` |
+| **fundraisers:url** | *uri* | The url to retrieve all fundraisers | `"https://api.betternow.org/organisations/1234567/fundraisers"` |
 | **html_url** | *uri* | The current url to view the organisation page on BetterNow. This can, and does, change. Requests to old urls will be redirect to the current url. | `"https://www.betternow.org/dk/helpnow"` |
 | **id** | *string* | Unique identifier of organisation | `1234567` |
 | **logo_url** | *uri* | The logo for the Organisation | `"https://cdn.example.net/logo.png"` |
 | **name** | *string* | The name of the Organisation | `"HelpNow"` |
 | **new_fundraiser_url** | *uri* | The current url to create a new Fundraiser for this organisation on BetterNow. This can, and does, change. Requests to old urls will redirect to the current url. | `"https://www.betternow.org/dk/projects/helpnow-projekt/fundraisers/new"` |
-| **projects** | *array* |  | `[{"id"=>1234567, "name"=>"HelpNows generelle arbejde", "url"=>"https://api.betternow.org/projects/1234567", "html_url"=>"https://www.betternow.org/dk/helpnow-projekt"}]` |
+| **projects:count** | *integer* | The count of the organisation's active projects | `12` |
+| **projects:url** | *uri* | The url to retrieve details about this organisation's projects | `"https://api.betternow.org/organisations/1234567/projects"` |
 | **updated_at** | *date-time* | When organisation was updated | `"2012-01-01T12:00:00Z"` |
 | **url** | *uri* |  | `"https://api.betternow.org/organisations/1234567"` |
 ### Organisation Info
@@ -718,27 +696,19 @@ HTTP/1.1 200 OK
     "url": "https://api.betternow.org/organisations/1234567/donations"
   },
   "donate_url": "https://www.betternow.org/dk/fundraisers/helpnow-indsamling1/donations/new",
-  "fundraisers": [
-    {
-      "id": 1234567,
-      "headline": "Firstname Lastname's Fundraiser for HelpNow",
-      "url": "https://api.betternow.org/fundraisers/1234567",
-      "html_url": "https://www.betternow.org/dk/firstname-lastnames-fundraiser-for-helpnow"
-    }
-  ],
+  "fundraisers": {
+    "count": 12,
+    "url": "https://api.betternow.org/organisations/1234567/fundraisers"
+  },
   "html_url": "https://www.betternow.org/dk/helpnow",
   "id": 1234567,
   "logo_url": "https://cdn.example.net/logo.png",
   "name": "HelpNow",
   "new_fundraiser_url": "https://www.betternow.org/dk/projects/helpnow-projekt/fundraisers/new",
-  "projects": [
-    {
-      "id": 1234567,
-      "name": "HelpNows generelle arbejde",
-      "url": "https://api.betternow.org/projects/1234567",
-      "html_url": "https://www.betternow.org/dk/helpnow-projekt"
-    }
-  ],
+  "projects": {
+    "count": 12,
+    "url": "https://api.betternow.org/organisations/1234567/projects"
+  },
   "updated_at": "2012-01-01T12:00:00Z",
   "url": "https://api.betternow.org/organisations/1234567"
 }
@@ -788,14 +758,10 @@ HTTP/1.1 200 OK
     "donate_url": "https://www.betternow.org/dk/fundraisers/helpnow-indsamling21/donations/new",
     "html_url": "https://www.betternow.org/dk/helpnow-projekt",
     "id": 1234567,
-    "fundraisers": [
-      {
-        "id": 1234567,
-        "headline": "Firstname Lastname's Fundraiser for HelpNow",
-        "url": "https://api.betternow.org/fundraisers/1234567",
-        "html_url": "https://www.betternow.org/dk/firstname-lastnames-fundraiser-for-helpnow"
-      }
-    ],
+    "fundraisers": {
+      "count": 12,
+      "url": "https://api.betternow.org/projects/1234567/fundraisers"
+    },
     "name": "HelpNows generelle arbejde",
     "new_fundraiser_url": "https://www.betternow.org/dk/projects/helpnow-projekt/fundraisers/new",
     "updated_at": "2012-01-01T12:00:00Z",
@@ -933,7 +899,8 @@ A Project is a specific cause that Users can Fundraise for. An Organisation typi
 | **donate_url** | *uri* | The current url to donate directly to the project on BetterNow. This can, and does, change. Requests to old urls will be redirect to the current url. | `"https://www.betternow.org/dk/fundraisers/helpnow-indsamling21/donations/new"` |
 | **html_url** | *uri* | The current url to view the project page on BetterNow. This can, and does, change. Requests to old urls will be redirect to the current url. | `"https://www.betternow.org/dk/helpnow-projekt"` |
 | **id** | *string* | Unique identifier of project | `1234567` |
-| **fundraisers** | *array* | An array of summarized fundraisers | `[{"id"=>1234567, "headline"=>"Firstname Lastname's Fundraiser for HelpNow", "url"=>"https://api.betternow.org/fundraisers/1234567", "html_url"=>"https://www.betternow.org/dk/firstname-lastnames-fundraiser-for-helpnow"}]` |
+| **fundraisers:count** | *integer* | The number of active fundraisers | `12` |
+| **fundraisers:url** | *uri* | The url to retrieve all fundraisers | `"https://api.betternow.org/projects/1234567/fundraisers"` |
 | **name** | *string* | The name of the Project | `"HelpNows generelle arbejde"` |
 | **new_fundraiser_url** | *uri* | The current url to create a new Fundraiser for this project on BetterNow. This can, and does, change. Requests to old urls will redirect to the current url. | `"https://www.betternow.org/dk/projects/helpnow-projekt/fundraisers/new"` |
 | **updated_at** | *date-time* | When project was updated | `"2012-01-01T12:00:00Z"` |
@@ -986,14 +953,10 @@ HTTP/1.1 200 OK
   "donate_url": "https://www.betternow.org/dk/fundraisers/helpnow-indsamling21/donations/new",
   "html_url": "https://www.betternow.org/dk/helpnow-projekt",
   "id": 1234567,
-  "fundraisers": [
-    {
-      "id": 1234567,
-      "headline": "Firstname Lastname's Fundraiser for HelpNow",
-      "url": "https://api.betternow.org/fundraisers/1234567",
-      "html_url": "https://www.betternow.org/dk/firstname-lastnames-fundraiser-for-helpnow"
-    }
-  ],
+  "fundraisers": {
+    "count": 12,
+    "url": "https://api.betternow.org/projects/1234567/fundraisers"
+  },
   "name": "HelpNows generelle arbejde",
   "new_fundraiser_url": "https://www.betternow.org/dk/projects/helpnow-projekt/fundraisers/new",
   "updated_at": "2012-01-01T12:00:00Z",
@@ -1129,7 +1092,8 @@ A Team is a collection of Fundraisers, who may or may not be raising money in co
 | **donations:total_donated:cents** | *integer* | Numeric amount in cents | `1234500` |
 | **donations:total_donated:currency** | *string* | 3 character currency code, as specified in ISO 4217<br/> **pattern:** <code>^([A-Z]{3})$</code> | `"EUR"` |
 | **donations:url** | *uri* | The url to retrieve details on all donations made via team members | `"https://api.betternow.org/teams/1234567/donations"` |
-| **fundraisers** | *array* | An array of summarized fundraisers, ordered by total donated, descending | `[{"id"=>1234567, "headline"=>"Firstname Lastname's Fundraiser for HelpNow", "url"=>"https://api.betternow.org/fundraisers/1234567", "html_url"=>"https://www.betternow.org/dk/firstname-lastnames-fundraiser-for-helpnow"}]` |
+| **fundraisers:count** | *integer* | The number of active fundraisers | `12` |
+| **fundraisers:url** | *uri* | The url to retrieve all fundraisers | `"https://api.betternow.org/teams/1234567/fundraisers"` |
 | **html_url** | *uri* | The url to the Team page on BetterNow | `"https://www.betternow.org/dk/teams/team-novo"` |
 | **id** | *string* | unique identifier of team | `1234567` |
 | **logo_url** | *uri* | The logo for the team | `"https://cdn.example.net/logo.png"` |
@@ -1181,14 +1145,10 @@ HTTP/1.1 200 OK
     },
     "url": "https://api.betternow.org/teams/1234567/donations"
   },
-  "fundraisers": [
-    {
-      "id": 1234567,
-      "headline": "Firstname Lastname's Fundraiser for HelpNow",
-      "url": "https://api.betternow.org/fundraisers/1234567",
-      "html_url": "https://www.betternow.org/dk/firstname-lastnames-fundraiser-for-helpnow"
-    }
-  ],
+  "fundraisers": {
+    "count": 12,
+    "url": "https://api.betternow.org/teams/1234567/fundraisers"
+  },
   "html_url": "https://www.betternow.org/dk/teams/team-novo",
   "id": 1234567,
   "logo_url": "https://cdn.example.net/logo.png",
@@ -1244,14 +1204,10 @@ HTTP/1.1 200 OK
       },
       "url": "https://api.betternow.org/teams/1234567/donations"
     },
-    "fundraisers": [
-      {
-        "id": 1234567,
-        "headline": "Firstname Lastname's Fundraiser for HelpNow",
-        "url": "https://api.betternow.org/fundraisers/1234567",
-        "html_url": "https://www.betternow.org/dk/firstname-lastnames-fundraiser-for-helpnow"
-      }
-    ],
+    "fundraisers": {
+      "count": 12,
+      "url": "https://api.betternow.org/teams/1234567/fundraisers"
+    },
     "html_url": "https://www.betternow.org/dk/teams/team-novo",
     "id": 1234567,
     "logo_url": "https://cdn.example.net/logo.png",
@@ -1410,14 +1366,10 @@ HTTP/1.1 200 OK
     "donate_url": "https://www.betternow.org/dk/fundraisers/helpnow-indsamling21/donations/new",
     "html_url": "https://www.betternow.org/dk/helpnow-projekt",
     "id": 1234567,
-    "fundraisers": [
-      {
-        "id": 1234567,
-        "headline": "Firstname Lastname's Fundraiser for HelpNow",
-        "url": "https://api.betternow.org/fundraisers/1234567",
-        "html_url": "https://www.betternow.org/dk/firstname-lastnames-fundraiser-for-helpnow"
-      }
-    ],
+    "fundraisers": {
+      "count": 12,
+      "url": "https://api.betternow.org/projects/1234567/fundraisers"
+    },
     "name": "HelpNows generelle arbejde",
     "new_fundraiser_url": "https://www.betternow.org/dk/projects/helpnow-projekt/fundraisers/new",
     "updated_at": "2012-01-01T12:00:00Z",
@@ -1432,3 +1384,6 @@ HTTP/1.1 200 OK
   }
 ]
 ```
+
+
+
