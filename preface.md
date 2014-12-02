@@ -47,8 +47,8 @@ clients should specify a User-Agent header to facilitate tracking and debugging.
 
 ## CORS
 
-BetterNow will configure cross-origin resource sharing (CORS) for your domain
-upon request to [support@betternow.org](mailto:support@betternow.org).
+The API fully supports cross-origin resource sharing (CORS) to enable
+browser-based clients.
 
 ## Rate Limits
 
