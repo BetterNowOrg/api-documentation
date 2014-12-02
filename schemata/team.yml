@@ -61,10 +61,19 @@ definitions:
     example: team-novo
     "$ref": "/schemata/common#/definitions/slug"
   fundraisers:
-    description: An array of summarized fundraisers, ordered by total donated, descending
-    items:
-      "$ref": "/schemata/fundraiser#/definitions/fundraiser_summary"
-    type: array
+    description: Information about the fundraisers that are members of this team
+    type:
+      - object
+    properties:
+      count:
+        description: The number of active fundraisers
+        example: 12
+        type:
+          - integer
+      url:
+        description: The url to retrieve all fundraisers
+        example: 'https://api.betternow.org/teams/1234567/fundraisers'
+        "$ref": "/schemata/common#/definitions/url"
   logo_url:
     description: The logo for the team
     example: 'https://cdn.example.net/logo.png'

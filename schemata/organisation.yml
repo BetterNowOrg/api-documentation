@@ -31,9 +31,19 @@ definitions:
     example: HelpNow is a dummy organisation created by BetterNow - to help us doing tutorial videos and screenshots. It is not a real organisation, and you cannot donate here.<br><br><br>
     "$ref": "/schemata/common#/definitions/description"
   projects:
-    items:
-      "$ref": "/schemata/project#/definitions/project_summary"
-    type: array
+    description: Information about this organisation's projects
+    type:
+      - object
+    properties:
+      count:
+        description: The count of the organisation's active projects
+        example: 12
+        type:
+          - integer
+      url:
+        example: 'https://api.betternow.org/organisations/1234567/projects'
+        description: The url to retrieve details about this organisation's projects
+        "$ref": "/schemata/project#/definitions/url"
   donate_url:
     description: The current url to donate directly to the organisation on BetterNow. This can, and does, change. Requests to old urls will be redirect to the current url.
     example: 'https://www.betternow.org/dk/fundraisers/helpnow-indsamling1/donations/new'
@@ -60,10 +70,19 @@ definitions:
         example: 'https://api.betternow.org/organisations/1234567/donations'
         "$ref": "/schemata/common#/definitions/url"
   fundraisers:
-    description: An array of summarized fundraisers
-    items:
-      "$ref": "/schemata/fundraiser#/definitions/fundraiser_summary"
-    type: array
+    description: Information about the fundraisers for this organisation
+    type:
+      - object
+    properties:
+      count:
+        description: The number of active fundraisers
+        example: 12
+        type:
+          - integer
+      url:
+        description: The url to retrieve all fundraisers
+        example: 'https://api.betternow.org/organisations/1234567/fundraisers'
+        "$ref": "/schemata/common#/definitions/url"
   logo_url:
     description: The logo for the Organisation
     example: 'https://cdn.example.net/logo.png'

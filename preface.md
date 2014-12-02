@@ -72,12 +72,13 @@ schema to test and stub a local version of the api when you're developing your
 client. I'm sure there are other tools for other languages - feel free to submit
 a PR to add links for them.
 
-## "Summary" vs. "Full" representations
+## "Sub-resources"
 
-When resources are embedded in other resources (e.g. a list of projects embedded
-in an organisation), they will often be represented as "summarized" versions of
-the embedded resource. Summary representations will always include an `url`
-element that can be dereferenced to provide the full representation.
+When resources are related to other resources (e.g. a list of projects embedded
+in an organisation), they will be represented as a reference to an url that can
+be dereferenced to return a list of the embedded resources. Clients should
+prefer following the url included in the parent resource rather then
+constructing their own urls.
 
 ## Example Usage
 ```
