@@ -75,7 +75,7 @@ definitions:
         example: 'https://api.betternow.org/teams/1234567/fundraisers'
         "$ref": "/schemata/common#/definitions/url"
   logo_url:
-    description: The logo for the team
+    description: The logo for the team. 92x92 pixels.
     example: 'https://cdn.example.net/logo.png'
     "$ref": "/schemata/common#/definitions/logo_url"
 description: A Team is a collection of Fundraisers, who may or may not be raising money in connection with a single Event.

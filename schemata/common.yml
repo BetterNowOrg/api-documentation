@@ -57,7 +57,7 @@ definitions:
           - object
         properties:
           url:
-            description: The url for the image. On the BetterNow site, the video takes precedence if both exist.
+            description: The url for the image. On the BetterNow site, the video takes precedence if both exist. 461x306 pixels
             example: 'https://cnd.example.net/image.jpg'
             "$ref": "/schemata/common#/definitions/url"
       video:
@@ -67,6 +67,14 @@ definitions:
           url:
             description: The url for the video. Currently only YouTube and Vimeo are supported. Could be blank.
             example: 'https://youtu.be/12345'
+            "$ref": "/schemata/common#/definitions/url"
+      thumb:
+        type:
+          - object
+        properties:
+          url:
+            description: The url for the cover media that should be displayed in e.g. a card view. 120x80 pixels
+            example: 'https://cnd.example.net/image.jpg'
             "$ref": "/schemata/common#/definitions/url"
   headline:
     example: 'My Headline For My Page'

@@ -84,7 +84,7 @@ definitions:
         example: 'https://api.betternow.org/organisations/1234567/fundraisers'
         "$ref": "/schemata/common#/definitions/url"
   logo_url:
-    description: The logo for the Organisation
+    description: The logo for the Organisation. 92x92 pixels.
     example: 'https://cdn.example.net/logo.png'
     "$ref": "/schemata/common#/definitions/logo_url"
   cover_media:

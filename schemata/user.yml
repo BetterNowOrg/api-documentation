@@ -22,7 +22,7 @@ definitions:
     type:
     - string
   avatar_url:
-    description: The URL for the avatar image for the donor
+    description: The URL for the avatar image for the user. 92x92 pixels
     example: "https://cdn.example.net/avatar.jpg"
     format: uri
     type:

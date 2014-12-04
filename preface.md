@@ -64,6 +64,9 @@ response has been truncated you will receive a `206 Partial Content` status and
 the `Next-Range` will be set header set. To retrieve the next range, repeat the request with
 the `Range` header set to the value of the previous request’s `Next-Range` header.
 
+If the list is empty, a `204 No Content` status with the correct range headers
+and an empty request body will be returned.
+
 ## JSON Schema
 
 The machine-readable version of this README is [schema.json](schema.json). You
