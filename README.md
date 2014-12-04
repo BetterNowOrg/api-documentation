@@ -84,6 +84,9 @@ response has been truncated you will receive a `206 Partial Content` status and
 the `Next-Range` will be set header set. To retrieve the next range, repeat the request with
 the `Range` header set to the value of the previous request’s `Next-Range` header.
 
+If the list is empty, a `204 No Content` status with the correct range headers
+and an empty request body will be returned.
+
 ## JSON Schema
 
 The machine-readable version of this README is [schema.json](schema.json). You
@@ -149,8 +152,9 @@ An Event is something that takes place at a particular time and/or place. It cou
 | Name | Type | Description | Example |
 | ------- | ------- | ------- | ------- |
 | **choose_project_to_fundraise_for_url** | *uri* | The url on BetterNow for people who want to fundraise in connection with an event | `"https://www.betternow.org/dk/fundraisers/new?event_id=1234567"` |
-| **cover_media:image:url** | *uri* | The url for the image. On the BetterNow site, the video takes precedence if both exist. | `"https://cnd.example.net/image.jpg"` |
+| **cover_media:image:url** | *uri* | The url for the image. On the BetterNow site, the video takes precedence if both exist. 461x306 pixels | `"https://cnd.example.net/image.jpg"` |
 | **cover_media:video:url** | *uri* | The url for the video. Currently only YouTube and Vimeo are supported. Could be blank. | `"https://youtu.be/12345"` |
+| **cover_media:thumb:url** | *uri* | The url for the cover media that should be displayed in e.g. a card view. 120x80 pixels | `"https://cnd.example.net/image.jpg"` |
 | **created_at** | *date-time* | when event was created | `"2012-01-01T12:00:00Z"` |
 | **description** | *string* | Text describing the Event added by the event organiser. Contains HTML. | `"<p>This is really, <b>REALLY</b> great</p> <br><br>"` |
 | **end_date** | *date-time* | The date when the Event ends. May be blank in the case of a single day event. | `"2012-01-01T12:00:00Z"` |
@@ -190,6 +194,9 @@ HTTP/1.1 200 OK
     },
     "video": {
       "url": "https://youtu.be/12345"
+    },
+    "thumb": {
+      "url": "https://cnd.example.net/image.jpg"
     }
   },
   "created_at": "2012-01-01T12:00:00Z",
@@ -237,6 +244,9 @@ HTTP/1.1 200 OK
       },
       "video": {
         "url": "https://youtu.be/12345"
+      },
+      "thumb": {
+        "url": "https://cnd.example.net/image.jpg"
       }
     },
     "created_at": "2012-01-01T12:00:00Z",
@@ -285,6 +295,9 @@ HTTP/1.1 200 OK
       },
       "video": {
         "url": "https://youtu.be/12345"
+      },
+      "thumb": {
+        "url": "https://cnd.example.net/image.jpg"
       }
     },
     "created_at": "2012-01-01T12:00:00Z",
@@ -348,6 +361,9 @@ HTTP/1.1 200 OK
       },
       "video": {
         "url": "https://youtu.be/12345"
+      },
+      "thumb": {
+        "url": "https://cnd.example.net/image.jpg"
       }
     },
     "created_at": "2012-01-01T12:00:00Z",
@@ -420,6 +436,9 @@ HTTP/1.1 200 OK
       },
       "video": {
         "url": "https://youtu.be/12345"
+      },
+      "thumb": {
+        "url": "https://cnd.example.net/image.jpg"
       }
     },
     "created_at": "2012-01-01T12:00:00Z",
@@ -455,8 +474,9 @@ Detailed information about a single Fundraising Page on BetterNow.org
 | Name | Type | Description | Example |
 | ------- | ------- | ------- | ------- |
 | **activity_score** | *integer* | A number that can be used for sorting lists of fundraisers. More recently active fundraisers should have a higher activity score than fundraisers who have raised more money long ago. | `987654321` |
-| **cover_media:image:url** | *uri* | The url for the image. On the BetterNow site, the video takes precedence if both exist. | `"https://cnd.example.net/image.jpg"` |
+| **cover_media:image:url** | *uri* | The url for the image. On the BetterNow site, the video takes precedence if both exist. 461x306 pixels | `"https://cnd.example.net/image.jpg"` |
 | **cover_media:video:url** | *uri* | The url for the video. Currently only YouTube and Vimeo are supported. Could be blank. | `"https://youtu.be/12345"` |
+| **cover_media:thumb:url** | *uri* | The url for the cover media that should be displayed in e.g. a card view. 120x80 pixels | `"https://cnd.example.net/image.jpg"` |
 | **created_at** | *date-time* | when resource was created | `"2012-01-01T12:00:00Z"` |
 | **description** | *string* | The text written by the fundraiser owner. Contains HTML. | `"<p>This is really, <b>REALLY</b> great</p> <br><br>"` |
 | **donate_url** | *uri* | The current url to donate via the fundraising page on BetterNow. This can, and does, change. Requests to old urls will be redirect to the current url. | `"https://www.betternow.org/dk/fundraisers/firstname-lastnames-fundraiser/donations/new"` |
@@ -470,7 +490,7 @@ Detailed information about a single Fundraising Page on BetterNow.org
 | **headline** | *string* | The headline for this fundraising page | `"Firstname Lastname's Fundraiser for HelpNow"` |
 | **html_url** | *uri* | The current url to view the fundraising page on BetterNow. This can, and does, change. Requests to old urls will be redirect to the current url. | `"https://www.betternow.org/dk/firstname-lastnames-fundraiser-for-helpnow"` |
 | **id** | *string* | The unique identifier of the fundraising page | `1234567` |
-| **owner:avatar_url** | *uri* | The URL for the avatar image for the donor | `"https://cdn.example.net/avatar.jpg"` |
+| **owner:avatar_url** | *uri* | The URL for the avatar image for the user. 92x92 pixels | `"https://cdn.example.net/avatar.jpg"` |
 | **owner:first_name** | *string* | The first name of the user | `"Firstname"` |
 | **owner:last_name** | *string* | The last name of the user | `"Lastname"` |
 | **recipient:id** | *string* | Unique identifier of organisation | `1234567` |
@@ -508,6 +528,9 @@ HTTP/1.1 200 OK
     },
     "video": {
       "url": "https://youtu.be/12345"
+    },
+    "thumb": {
+      "url": "https://cnd.example.net/image.jpg"
     }
   },
   "created_at": "2012-01-01T12:00:00Z",
@@ -575,6 +598,9 @@ HTTP/1.1 200 OK
       },
       "video": {
         "url": "https://youtu.be/12345"
+      },
+      "thumb": {
+        "url": "https://cnd.example.net/image.jpg"
       }
     },
     "created_at": "2012-01-01T12:00:00Z",
@@ -656,8 +682,9 @@ An Organisation can receive Donations on BetterNow
 ### Attributes
 | Name | Type | Description | Example |
 | ------- | ------- | ------- | ------- |
-| **cover_media:image:url** | *uri* | The url for the image. On the BetterNow site, the video takes precedence if both exist. | `"https://cnd.example.net/image.jpg"` |
+| **cover_media:image:url** | *uri* | The url for the image. On the BetterNow site, the video takes precedence if both exist. 461x306 pixels | `"https://cnd.example.net/image.jpg"` |
 | **cover_media:video:url** | *uri* | The url for the video. Currently only YouTube and Vimeo are supported. Could be blank. | `"https://youtu.be/12345"` |
+| **cover_media:thumb:url** | *uri* | The url for the cover media that should be displayed in e.g. a card view. 120x80 pixels | `"https://cnd.example.net/image.jpg"` |
 | **created_at** | *date-time* | When organisation was created | `"2012-01-01T12:00:00Z"` |
 | **description** | *string* | The text written by the Organisation's administrators. Contains HTML | `"HelpNow is a dummy organisation created by BetterNow - to help us doing tutorial videos and screenshots. It is not a real organisation, and you cannot donate here.<br><br><br>"` |
 | **donations:count** | *integer* | The count of all donations made to this project | `123` |
@@ -669,7 +696,7 @@ An Organisation can receive Donations on BetterNow
 | **fundraisers:url** | *uri* | The url to retrieve all fundraisers | `"https://api.betternow.org/organisations/1234567/fundraisers"` |
 | **html_url** | *uri* | The current url to view the organisation page on BetterNow. This can, and does, change. Requests to old urls will be redirect to the current url. | `"https://www.betternow.org/dk/helpnow"` |
 | **id** | *string* | Unique identifier of organisation | `1234567` |
-| **logo_url** | *uri* | The logo for the Organisation | `"https://cdn.example.net/logo.png"` |
+| **logo_url** | *uri* | The logo for the Organisation. 92x92 pixels. | `"https://cdn.example.net/logo.png"` |
 | **name** | *string* | The name of the Organisation | `"HelpNow"` |
 | **new_fundraiser_url** | *uri* | The current url to create a new Fundraiser for this organisation on BetterNow. This can, and does, change. Requests to old urls will redirect to the current url. | `"https://www.betternow.org/dk/projects/helpnow-projekt/fundraisers/new"` |
 | **projects:count** | *integer* | The count of the organisation's active projects | `12` |
@@ -703,6 +730,9 @@ HTTP/1.1 200 OK
     },
     "video": {
       "url": "https://youtu.be/12345"
+    },
+    "thumb": {
+      "url": "https://cnd.example.net/image.jpg"
     }
   },
   "created_at": "2012-01-01T12:00:00Z",
@@ -763,6 +793,9 @@ HTTP/1.1 200 OK
       },
       "video": {
         "url": "https://youtu.be/12345"
+      },
+      "thumb": {
+        "url": "https://cnd.example.net/image.jpg"
       }
     },
     "created_at": "2012-01-01T12:00:00Z",
@@ -826,6 +859,9 @@ HTTP/1.1 200 OK
       },
       "video": {
         "url": "https://youtu.be/12345"
+      },
+      "thumb": {
+        "url": "https://cnd.example.net/image.jpg"
       }
     },
     "created_at": "2012-01-01T12:00:00Z",
@@ -908,8 +944,9 @@ A Project is a specific cause that Users can Fundraise for. An Organisation typi
 | Name | Type | Description | Example |
 | ------- | ------- | ------- | ------- |
 | **activity_score** | *integer* | A number that can be used for sorting lists of campaigns. More recently active campaigins should have a higher activity score than campaigins who have raised more money long ago. | `987654321` |
-| **cover_media:image:url** | *uri* | The url for the image. On the BetterNow site, the video takes precedence if both exist. | `"https://cnd.example.net/image.jpg"` |
+| **cover_media:image:url** | *uri* | The url for the image. On the BetterNow site, the video takes precedence if both exist. 461x306 pixels | `"https://cnd.example.net/image.jpg"` |
 | **cover_media:video:url** | *uri* | The url for the video. Currently only YouTube and Vimeo are supported. Could be blank. | `"https://youtu.be/12345"` |
+| **cover_media:thumb:url** | *uri* | The url for the cover media that should be displayed in e.g. a card view. 120x80 pixels | `"https://cnd.example.net/image.jpg"` |
 | **created_at** | *date-time* | When project was created | `"2012-01-01T12:00:00Z"` |
 | **description** | *string* | The text written by the Project's administrators. Contains HTML | `"We need your money for this <b>GREAT</b> project"` |
 | **donations:count** | *integer* | The count of all donations made to this project | `123` |
@@ -958,6 +995,9 @@ HTTP/1.1 200 OK
     },
     "video": {
       "url": "https://youtu.be/12345"
+    },
+    "thumb": {
+      "url": "https://cnd.example.net/image.jpg"
     }
   },
   "created_at": "2012-01-01T12:00:00Z",
@@ -1020,6 +1060,9 @@ HTTP/1.1 200 OK
       },
       "video": {
         "url": "https://youtu.be/12345"
+      },
+      "thumb": {
+        "url": "https://cnd.example.net/image.jpg"
       }
     },
     "created_at": "2012-01-01T12:00:00Z",
@@ -1101,11 +1144,12 @@ A Team is a collection of Fundraisers, who may or may not be raising money in co
 ### Attributes
 | Name | Type | Description | Example |
 | ------- | ------- | ------- | ------- |
-| **captain:avatar_url** | *uri* | The URL for the avatar image for the donor | `"https://cdn.example.net/avatar.jpg"` |
+| **captain:avatar_url** | *uri* | The URL for the avatar image for the user. 92x92 pixels | `"https://cdn.example.net/avatar.jpg"` |
 | **captain:first_name** | *string* | The first name of the user | `"Firstname"` |
 | **captain:last_name** | *string* | The last name of the user | `"Lastname"` |
-| **cover_media:image:url** | *uri* | The url for the image. On the BetterNow site, the video takes precedence if both exist. | `"https://cnd.example.net/image.jpg"` |
+| **cover_media:image:url** | *uri* | The url for the image. On the BetterNow site, the video takes precedence if both exist. 461x306 pixels | `"https://cnd.example.net/image.jpg"` |
 | **cover_media:video:url** | *uri* | The url for the video. Currently only YouTube and Vimeo are supported. Could be blank. | `"https://youtu.be/12345"` |
+| **cover_media:thumb:url** | *uri* | The url for the cover media that should be displayed in e.g. a card view. 120x80 pixels | `"https://cnd.example.net/image.jpg"` |
 | **created_at** | *date-time* | when team was created | `"2012-01-01T12:00:00Z"` |
 | **description** | *string* | Text describing the Team added by the Team Captain. Contains HTML. | `"<p>This is really, <b>REALLY</b> great</p> <br><br>"` |
 | **donations:count** | *integer* | The count of all donations made | `123` |
@@ -1116,7 +1160,7 @@ A Team is a collection of Fundraisers, who may or may not be raising money in co
 | **fundraisers:url** | *uri* | The url to retrieve all fundraisers | `"https://api.betternow.org/teams/1234567/fundraisers"` |
 | **html_url** | *uri* | The url to the Team page on BetterNow | `"https://www.betternow.org/dk/teams/team-novo"` |
 | **id** | *string* | unique identifier of team | `1234567` |
-| **logo_url** | *uri* | The logo for the team | `"https://cdn.example.net/logo.png"` |
+| **logo_url** | *uri* | The logo for the team. 92x92 pixels. | `"https://cdn.example.net/logo.png"` |
 | **name** | *string* | the name of the Team | `"Team NOVO"` |
 | **slug** | *string* | The current url path component to identify the team. This can, and does, change.<br/> **pattern:** <code>^([a-z0-9-]{2,})$</code> | `"team-novo"` |
 | **updated_at** | *date-time* | when team was updated | `"2012-01-01T12:00:00Z"` |
@@ -1153,6 +1197,9 @@ HTTP/1.1 200 OK
     },
     "video": {
       "url": "https://youtu.be/12345"
+    },
+    "thumb": {
+      "url": "https://cnd.example.net/image.jpg"
     }
   },
   "created_at": "2012-01-01T12:00:00Z",
@@ -1212,6 +1259,9 @@ HTTP/1.1 200 OK
       },
       "video": {
         "url": "https://youtu.be/12345"
+      },
+      "thumb": {
+        "url": "https://cnd.example.net/image.jpg"
       }
     },
     "created_at": "2012-01-01T12:00:00Z",
@@ -1268,6 +1318,9 @@ HTTP/1.1 200 OK
       },
       "video": {
         "url": "https://youtu.be/12345"
+      },
+      "thumb": {
+        "url": "https://cnd.example.net/image.jpg"
       }
     },
     "created_at": "2012-01-01T12:00:00Z",
@@ -1371,6 +1424,9 @@ HTTP/1.1 200 OK
       },
       "video": {
         "url": "https://youtu.be/12345"
+      },
+      "thumb": {
+        "url": "https://cnd.example.net/image.jpg"
       }
     },
     "created_at": "2012-01-01T12:00:00Z",

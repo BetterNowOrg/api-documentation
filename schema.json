@@ -81,7 +81,7 @@
               ],
               "properties": {
                 "url": {
-                  "description": "The url for the image. On the BetterNow site, the video takes precedence if both exist.",
+                  "description": "The url for the image. On the BetterNow site, the video takes precedence if both exist. 461x306 pixels",
                   "example": "https://cnd.example.net/image.jpg",
                   "$ref": "#/definitions/common/definitions/url"
                 }
@@ -95,6 +95,18 @@
                 "url": {
                   "description": "The url for the video. Currently only YouTube and Vimeo are supported. Could be blank.",
                   "example": "https://youtu.be/12345",
+                  "$ref": "#/definitions/common/definitions/url"
+                }
+              }
+            },
+            "thumb": {
+              "type": [
+                "object"
+              ],
+              "properties": {
+                "url": {
+                  "description": "The url for the cover media that should be displayed in e.g. a card view. 120x80 pixels",
+                  "example": "https://cnd.example.net/image.jpg",
                   "$ref": "#/definitions/common/definitions/url"
                 }
               }
@@ -773,7 +785,7 @@
           }
         },
         "logo_url": {
-          "description": "The logo for the Organisation",
+          "description": "The logo for the Organisation. 92x92 pixels.",
           "example": "https://cdn.example.net/logo.png",
           "$ref": "#/definitions/common/definitions/logo_url"
         },
@@ -1131,7 +1143,7 @@
           "$ref": "#/definitions/common/definitions/updated_at"
         },
         "logo_url": {
-          "description": "The logo for the team",
+          "description": "The logo for the team. 92x92 pixels.",
           "example": "https://cdn.example.net/logo.png",
           "$ref": "#/definitions/common/definitions/logo_url"
         },
@@ -1340,7 +1352,7 @@
           ]
         },
         "avatar_url": {
-          "description": "The URL for the avatar image for the donor",
+          "description": "The URL for the avatar image for the user. 92x92 pixels",
           "example": "https://cdn.example.net/avatar.jpg",
           "format": "uri",
           "type": [
