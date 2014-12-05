@@ -306,7 +306,7 @@
         },
         "start_date": {
           "description": "The date when the Event starts",
-          "example": "2012-01-01T12:00:00Z",
+          "example": "2012-01-01",
           "format": "date-time",
           "type": [
             "string"
@@ -314,7 +314,7 @@
         },
         "end_date": {
           "description": "The date when the Event ends. May be blank in the case of a single day event.",
-          "example": "2012-01-01T12:00:00Z",
+          "example": "2012-01-01",
           "format": "date-time",
           "type": [
             "string"
@@ -353,6 +353,13 @@
           "description": "The current url path component to identify the event. This can, and does, change.",
           "example": "cph-marathon-2013",
           "$ref": "#/definitions/common/definitions/slug"
+        },
+        "activity_score": {
+          "description": "A number that can be used for sorting lists of events. More recently active events should have a higher activity score than events who have raised more money long ago.",
+          "example": 987654321,
+          "type": [
+            "integer"
+          ]
         }
       },
       "description": "An Event is something that takes place at a particular time and/or place. It could be a sporting event like the Copenhagen Marathon 2013, or a holiday like Christmas 2014",
@@ -409,6 +416,9 @@
         }
       ],
       "properties": {
+        "activity_score": {
+          "$ref": "#/definitions/event/definitions/activity_score"
+        },
         "choose_project_to_fundraise_for_url": {
           "$ref": "#/definitions/event/definitions/choose_project_to_fundraise_for_url"
         },
@@ -441,6 +451,9 @@
         },
         "updated_at": {
           "$ref": "#/definitions/event/definitions/updated_at"
+        },
+        "slug": {
+          "$ref": "#/definitions/event/definitions/slug"
         },
         "start_date": {
           "$ref": "#/definitions/event/definitions/start_date"
@@ -898,7 +911,7 @@
       "title": "Project",
       "definitions": {
         "activity_score": {
-          "description": "A number that can be used for sorting lists of campaigns. More recently active campaigins should have a higher activity score than campaigins who have raised more money long ago.",
+          "description": "A number that can be used for sorting lists of projects. More recently active projects should have a higher activity score than projects who have raised more money long ago.",
           "example": 987654321,
           "type": [
             "integer"

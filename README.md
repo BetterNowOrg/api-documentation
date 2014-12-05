@@ -151,20 +151,22 @@ An Event is something that takes place at a particular time and/or place. It cou
 ### Attributes
 | Name | Type | Description | Example |
 | ------- | ------- | ------- | ------- |
+| **activity_score** | *integer* | A number that can be used for sorting lists of events. More recently active events should have a higher activity score than events who have raised more money long ago. | `987654321` |
 | **choose_project_to_fundraise_for_url** | *uri* | The url on BetterNow for people who want to fundraise in connection with an event | `"https://www.betternow.org/dk/fundraisers/new?event_id=1234567"` |
 | **cover_media:image:url** | *uri* | The url for the image. On the BetterNow site, the video takes precedence if both exist. 461x306 pixels | `"https://cnd.example.net/image.jpg"` |
 | **cover_media:video:url** | *uri* | The url for the video. Currently only YouTube and Vimeo are supported. Could be blank. | `"https://youtu.be/12345"` |
 | **cover_media:thumb:url** | *uri* | The url for the cover media that should be displayed in e.g. a card view. 120x80 pixels | `"https://cnd.example.net/image.jpg"` |
 | **created_at** | *date-time* | when event was created | `"2012-01-01T12:00:00Z"` |
 | **description** | *string* | Text describing the Event added by the event organiser. Contains HTML. | `"<p>This is really, <b>REALLY</b> great</p> <br><br>"` |
-| **end_date** | *date-time* | The date when the Event ends. May be blank in the case of a single day event. | `"2012-01-01T12:00:00Z"` |
+| **end_date** | *date-time* | The date when the Event ends. May be blank in the case of a single day event. | `"2012-01-01"` |
 | **html_url** | *uri* | The url to the Event page on BetterNow | `"https://www.betternow.org/dk/events/copenhagen-marathon-2013"` |
 | **id** | *string* | unique identifier of event | `1234567` |
 | **location:city** | *string* | The name of a city | `"København"` |
 | **name** | *string* | the name of the Event | `"Copenhagen Marathon 2013"` |
 | **logo_url** | *uri* | The logo for the Event | `"https://cdn.example.net/logo.png"` |
 | **updated_at** | *date-time* | when event was updated | `"2012-01-01T12:00:00Z"` |
-| **start_date** | *date-time* | The date when the Event starts | `"2012-01-01T12:00:00Z"` |
+| **slug** | *string* | The current url path component to identify the event. This can, and does, change.<br/> **pattern:** <code>^([a-z0-9-]{2,})$</code> | `"cph-marathon-2013"` |
+| **start_date** | *date-time* | The date when the Event starts | `"2012-01-01"` |
 | **url** | *uri* |  | `"https://api.betternow.org/events/1234567"` |
 ### Event Info
 Info for existing event.
@@ -187,6 +189,7 @@ HTTP/1.1 200 OK
 ```
 ```json
 {
+  "activity_score": 987654321,
   "choose_project_to_fundraise_for_url": "https://www.betternow.org/dk/fundraisers/new?event_id=1234567",
   "cover_media": {
     "image": {
@@ -201,7 +204,7 @@ HTTP/1.1 200 OK
   },
   "created_at": "2012-01-01T12:00:00Z",
   "description": "<p>This is really, <b>REALLY</b> great</p> <br><br>",
-  "end_date": "2012-01-01T12:00:00Z",
+  "end_date": "2012-01-01",
   "html_url": "https://www.betternow.org/dk/events/copenhagen-marathon-2013",
   "id": 1234567,
   "location": {
@@ -210,7 +213,8 @@ HTTP/1.1 200 OK
   "name": "Copenhagen Marathon 2013",
   "logo_url": "https://cdn.example.net/logo.png",
   "updated_at": "2012-01-01T12:00:00Z",
-  "start_date": "2012-01-01T12:00:00Z",
+  "slug": "cph-marathon-2013",
+  "start_date": "2012-01-01",
   "url": "https://api.betternow.org/events/1234567"
 }
 ```
@@ -237,6 +241,7 @@ HTTP/1.1 200 OK
 ```json
 [
   {
+    "activity_score": 987654321,
     "choose_project_to_fundraise_for_url": "https://www.betternow.org/dk/fundraisers/new?event_id=1234567",
     "cover_media": {
       "image": {
@@ -251,7 +256,7 @@ HTTP/1.1 200 OK
     },
     "created_at": "2012-01-01T12:00:00Z",
     "description": "<p>This is really, <b>REALLY</b> great</p> <br><br>",
-    "end_date": "2012-01-01T12:00:00Z",
+    "end_date": "2012-01-01",
     "html_url": "https://www.betternow.org/dk/events/copenhagen-marathon-2013",
     "id": 1234567,
     "location": {
@@ -260,7 +265,8 @@ HTTP/1.1 200 OK
     "name": "Copenhagen Marathon 2013",
     "logo_url": "https://cdn.example.net/logo.png",
     "updated_at": "2012-01-01T12:00:00Z",
-    "start_date": "2012-01-01T12:00:00Z",
+    "slug": "cph-marathon-2013",
+    "start_date": "2012-01-01",
     "url": "https://api.betternow.org/events/1234567"
   }
 ]
@@ -943,7 +949,7 @@ A Project is a specific cause that Users can Fundraise for. An Organisation typi
 ### Attributes
 | Name | Type | Description | Example |
 | ------- | ------- | ------- | ------- |
-| **activity_score** | *integer* | A number that can be used for sorting lists of campaigns. More recently active campaigins should have a higher activity score than campaigins who have raised more money long ago. | `987654321` |
+| **activity_score** | *integer* | A number that can be used for sorting lists of projects. More recently active projects should have a higher activity score than projects who have raised more money long ago. | `987654321` |
 | **cover_media:image:url** | *uri* | The url for the image. On the BetterNow site, the video takes precedence if both exist. 461x306 pixels | `"https://cnd.example.net/image.jpg"` |
 | **cover_media:video:url** | *uri* | The url for the video. Currently only YouTube and Vimeo are supported. Could be blank. | `"https://youtu.be/12345"` |
 | **cover_media:thumb:url** | *uri* | The url for the cover media that should be displayed in e.g. a card view. 120x80 pixels | `"https://cnd.example.net/image.jpg"` |
