@@ -3,7 +3,7 @@
 title: Project
 definitions:
   activity_score:
-    description: A number that can be used for sorting lists of campaigns. More recently active campaigins should have a higher activity score than campaigins who have raised more money long ago.
+    description: A number that can be used for sorting lists of projects. More recently active projects should have a higher activity score than projects who have raised more money long ago.
     example: 987654321
     type:
       - integer
