@@ -31,13 +31,13 @@ definitions:
     "$ref": "/schemata/common#/definitions/cover_media"
   start_date:
     description: The date when the Event starts
-    example: '2012-01-01T12:00:00Z'
+    example: '2012-01-01'
     format: date-time
     type:
     - string
   end_date:
     description: The date when the Event ends. May be blank in the case of a single day event.
-    example: '2012-01-01T12:00:00Z'
+    example: '2012-01-01'
     format: date-time
     type:
     - string
@@ -66,6 +66,11 @@ definitions:
     description: The current url path component to identify the event. This can, and does, change.
     example: cph-marathon-2013
     "$ref": "/schemata/common#/definitions/slug"
+  activity_score:
+    description: A number that can be used for sorting lists of events. More recently active events should have a higher activity score than events who have raised more money long ago.
+    example: 987654321
+    type:
+      - integer
 description: An Event is something that takes place at a particular time and/or place. It could be a sporting event like the Copenhagen Marathon 2013, or a holiday like Christmas 2014
 links:
 - description: Info for existing event.
@@ -103,6 +108,8 @@ links:
     items:
       "$ref": "/schemata/team"
 properties:
+  activity_score:
+    "$ref": "/schemata/event#/definitions/activity_score"
   choose_project_to_fundraise_for_url:
     "$ref": "/schemata/event#/definitions/choose_project_to_fundraise_for_url"
   cover_media:
@@ -125,6 +132,8 @@ properties:
     "$ref": "/schemata/event#/definitions/logo_url"
   updated_at:
     "$ref": "/schemata/event#/definitions/updated_at"
+  slug:
+    "$ref": "/schemata/event#/definitions/slug"
   start_date:
     "$ref": "/schemata/event#/definitions/start_date"
   url:
