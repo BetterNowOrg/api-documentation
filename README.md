@@ -396,6 +396,7 @@ HTTP/1.1 200 OK
       "first_name": "Firstname",
       "last_name": "Lastname"
     },
+    "partner_data": null,
     "recipient": {
       "id": 1234567,
       "name": "HelpNow",
@@ -465,6 +466,7 @@ HTTP/1.1 200 OK
     "id": 1234567,
     "logo_url": "https://cdn.example.net/logo.png",
     "name": "Team NOVO",
+    "partner_data": null,
     "slug": "team-novo",
     "updated_at": "2012-01-01T12:00:00Z",
     "url": "https://api.betternow.org/team/1234567"
@@ -499,6 +501,7 @@ Detailed information about a single Fundraising Page on BetterNow.org
 | **owner:avatar_url** | *uri* | The URL for the avatar image for the user. 92x92 pixels | `"https://cdn.example.net/avatar.jpg"` |
 | **owner:first_name** | *string* | The first name of the user | `"Firstname"` |
 | **owner:last_name** | *string* | The last name of the user | `"Lastname"` |
+| **partner_data** | *object* | An object contaning data from partner systems. Structure varies depending on the partner. |  |
 | **recipient:id** | *string* | Unique identifier of organisation | `1234567` |
 | **recipient:name** | *string* | The name of the Organisation | `"HelpNow"` |
 | **recipient:url** | *uri* |  | `"https://api.betternow.org/organisations/1234567"` |
@@ -563,6 +566,7 @@ HTTP/1.1 200 OK
     "first_name": "Firstname",
     "last_name": "Lastname"
   },
+  "partner_data": null,
   "recipient": {
     "id": 1234567,
     "name": "HelpNow",
@@ -633,6 +637,7 @@ HTTP/1.1 200 OK
       "first_name": "Firstname",
       "last_name": "Lastname"
     },
+    "partner_data": null,
     "recipient": {
       "id": 1234567,
       "name": "HelpNow",
@@ -894,6 +899,7 @@ HTTP/1.1 200 OK
       "first_name": "Firstname",
       "last_name": "Lastname"
     },
+    "partner_data": null,
     "recipient": {
       "id": 1234567,
       "name": "HelpNow",
@@ -1095,6 +1101,7 @@ HTTP/1.1 200 OK
       "first_name": "Firstname",
       "last_name": "Lastname"
     },
+    "partner_data": null,
     "recipient": {
       "id": 1234567,
       "name": "HelpNow",
@@ -1168,6 +1175,7 @@ A Team is a collection of Fundraisers, who may or may not be raising money in co
 | **id** | *string* | unique identifier of team | `1234567` |
 | **logo_url** | *uri* | The logo for the team. 92x92 pixels. | `"https://cdn.example.net/logo.png"` |
 | **name** | *string* | the name of the Team | `"Team NOVO"` |
+| **partner_data** | *object* | An object contaning data from partner systems. Structure varies depending on the partner. |  |
 | **slug** | *string* | The current url path component to identify the team. This can, and does, change.<br/> **pattern:** <code>^([a-z0-9-]{2,})$</code> | `"team-novo"` |
 | **updated_at** | *date-time* | when team was updated | `"2012-01-01T12:00:00Z"` |
 | **url** | *uri* |  | `"https://api.betternow.org/team/1234567"` |
@@ -1226,6 +1234,7 @@ HTTP/1.1 200 OK
   "id": 1234567,
   "logo_url": "https://cdn.example.net/logo.png",
   "name": "Team NOVO",
+  "partner_data": null,
   "slug": "team-novo",
   "updated_at": "2012-01-01T12:00:00Z",
   "url": "https://api.betternow.org/team/1234567"
@@ -1288,6 +1297,7 @@ HTTP/1.1 200 OK
     "id": 1234567,
     "logo_url": "https://cdn.example.net/logo.png",
     "name": "Team NOVO",
+    "partner_data": null,
     "slug": "team-novo",
     "updated_at": "2012-01-01T12:00:00Z",
     "url": "https://api.betternow.org/team/1234567"
@@ -1353,6 +1363,7 @@ HTTP/1.1 200 OK
       "first_name": "Firstname",
       "last_name": "Lastname"
     },
+    "partner_data": null,
     "recipient": {
       "id": 1234567,
       "name": "HelpNow",

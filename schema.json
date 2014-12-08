@@ -671,7 +671,7 @@
           "$ref": "#/definitions/fundraiser/definitions/owner"
         },
         "partner_data": {
-          "$ref": "#/definitions/fundraisers/definitions/partner_data"
+          "$ref": "#/definitions/fundraiser/definitions/partner_data"
         },
         "recipient": {
           "$ref": "#/definitions/fundraiser/definitions/recipient"
