@@ -5,6 +5,12 @@
       "$schema": "http://json-schema.org/draft-04/hyper-schema",
       "title": "Common definitions",
       "definitions": {
+        "partner_data": {
+          "description": "An object contaning data from partner systems. Structure varies depending on the partner.",
+          "type": [
+            "object"
+          ]
+        },
         "id": {
           "description": "unique identifier",
           "example": 1234567,
@@ -593,6 +599,9 @@
               "$ref": "#/definitions/fundraiser/definitions/html_url"
             }
           }
+        },
+        "partner_data": {
+          "$ref": "#/definitions/common/definitions/partner_data"
         }
       },
       "description": "Detailed information about a single Fundraising Page on BetterNow.org",
@@ -660,6 +669,9 @@
         },
         "owner": {
           "$ref": "#/definitions/fundraiser/definitions/owner"
+        },
+        "partner_data": {
+          "$ref": "#/definitions/fundraisers/definitions/partner_data"
         },
         "recipient": {
           "$ref": "#/definitions/fundraiser/definitions/recipient"
@@ -1234,6 +1246,9 @@
               "$ref": "#/definitions/common/definitions/url"
             }
           }
+        },
+        "partner_data": {
+          "$ref": "#/definitions/common/definitions/partner_data"
         }
       },
       "description": "A Team is a collection of Fundraisers, who may or may not be raising money in connection with a single Event.",
@@ -1319,6 +1334,9 @@
         },
         "name": {
           "$ref": "#/definitions/team/definitions/name"
+        },
+        "partner_data": {
+          "$ref": "#/definitions/team/definitions/partner_data"
         },
         "slug": {
           "$ref": "#/definitions/team/definitions/slug"

@@ -88,6 +88,8 @@ definitions:
         "$ref": "/schemata/fundraiser#/definitions/url"
       html_url:
         "$ref": "/schemata/fundraiser#/definitions/html_url"
+  partner_data:
+    "$ref": "/schemata/common#/definitions/partner_data"
 description: Detailed information about a single Fundraising Page on BetterNow.org
 links:
 - description: Info for existing fundraiser.
@@ -133,6 +135,8 @@ properties:
     "$ref": "/schemata/fundraiser#/definitions/id"
   owner:
     "$ref": "/schemata/fundraiser#/definitions/owner"
+  partner_data:
+    "$ref": "/schemata/fundraiser#/definitions/partner_data"
   recipient:
     "$ref": "/schemata/fundraiser#/definitions/recipient"
   slug:

@@ -78,6 +78,8 @@ definitions:
     description: The logo for the team. 92x92 pixels.
     example: 'https://cdn.example.net/logo.png'
     "$ref": "/schemata/common#/definitions/logo_url"
+  partner_data:
+    "$ref": "/schemata/common#/definitions/partner_data"
 description: A Team is a collection of Fundraisers, who may or may not be raising money in connection with a single Event.
 links:
 - description: Info for existing team.
@@ -135,6 +137,8 @@ properties:
     "$ref": "/schemata/team#/definitions/logo_url"
   name:
     "$ref": "/schemata/team#/definitions/name"
+  partner_data:
+    "$ref": "/schemata/team#/definitions/partner_data"
   slug:
     "$ref": "/schemata/team#/definitions/slug"
   updated_at:

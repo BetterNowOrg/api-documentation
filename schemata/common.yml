@@ -2,6 +2,10 @@
 "$schema": http://json-schema.org/draft-04/hyper-schema
 title: Common definitions
 definitions:
+  partner_data:
+    description: An object contaning data from partner systems. Structure varies depending on the partner.
+    type:
+      - object
   id:
     description: unique identifier
     example: 1234567
