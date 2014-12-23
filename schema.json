@@ -1249,6 +1249,10 @@
         },
         "partner_data": {
           "$ref": "#/definitions/common/definitions/partner_data"
+        },
+        "goal": {
+          "description": "The monetary goal for this Team. May be 0 cents, in which case it should be treated as if there is no goal.",
+          "$ref": "#/definitions/common/definitions/amount"
         }
       },
       "description": "A Team is a collection of Fundraisers, who may or may not be raising money in connection with a single Event.",
@@ -1322,6 +1326,9 @@
         },
         "fundraisers": {
           "$ref": "#/definitions/team/definitions/fundraisers"
+        },
+        "goal": {
+          "$ref": "#/definitions/team/definitions/goal"
         },
         "html_url": {
           "$ref": "#/definitions/team/definitions/html_url"

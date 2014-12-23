@@ -29,10 +29,75 @@ API](https://devcenter.heroku.com/articles/platform-api-reference)
 * ["Sub-resources"](#sub-resources)
 * [Example Usage](#example-usage)
 * [Event](#event)
+  * [Attributes](#attributes)
+  * [Event Info](#event-info)
+    * [Curl Example](#curl-example)
+    * [Response Example](#response-example)
+  * [Event List](#event-list)
+    * [Curl Example](#curl-example)
+    * [Response Example](#response-example)
+  * [Event List Projects](#event-list-projects)
+    * [Curl Example](#curl-example)
+    * [Response Example](#response-example)
+  * [Event List Fundraisers](#event-list-fundraisers)
+    * [Curl Example](#curl-example)
+    * [Response Example](#response-example)
+  * [Event List Teams](#event-list-teams)
+    * [Curl Example](#curl-example)
+    * [Response Example](#response-example)
 * [Fundraising Page](#fundraising-page)
+  * [Attributes](#attributes)
+  * [Fundraising Page Info](#fundraising-page-info)
+    * [Curl Example](#curl-example)
+    * [Response Example](#response-example)
+  * [Fundraising Page List](#fundraising-page-list)
+    * [Curl Example](#curl-example)
+    * [Response Example](#response-example)
+  * [Fundraising Page List Donations](#fundraising-page-list-donations)
+    * [Curl Example](#curl-example)
+    * [Response Example](#response-example)
 * [Organisation](#organisation)
+  * [Attributes](#attributes)
+  * [Organisation Info](#organisation-info)
+    * [Curl Example](#curl-example)
+    * [Response Example](#response-example)
+  * [Organisation List Projects](#organisation-list-projects)
+    * [Curl Example](#curl-example)
+    * [Response Example](#response-example)
+  * [Organisation List Fundraisers](#organisation-list-fundraisers)
+    * [Curl Example](#curl-example)
+    * [Response Example](#response-example)
+  * [Organisation List Donations](#organisation-list-donations)
+    * [Curl Example](#curl-example)
+    * [Response Example](#response-example)
 * [Project](#project)
+  * [Attributes](#attributes)
+  * [Project Info](#project-info)
+    * [Curl Example](#curl-example)
+    * [Response Example](#response-example)
+  * [Project List Fundraisers](#project-list-fundraisers)
+    * [Curl Example](#curl-example)
+    * [Response Example](#response-example)
+  * [Project List Donations](#project-list-donations)
+    * [Curl Example](#curl-example)
+    * [Response Example](#response-example)
 * [Team](#team)
+  * [Attributes](#attributes)
+  * [Team Info](#team-info)
+    * [Curl Example](#curl-example)
+    * [Response Example](#response-example)
+  * [Team List](#team-list)
+    * [Curl Example](#curl-example)
+    * [Response Example](#response-example)
+  * [Team List Fundraisers](#team-list-fundraisers)
+    * [Curl Example](#curl-example)
+    * [Response Example](#response-example)
+  * [Team List Donations](#team-list-donations)
+    * [Curl Example](#curl-example)
+    * [Response Example](#response-example)
+  * [Team List Projects](#team-list-projects)
+    * [Curl Example](#curl-example)
+    * [Response Example](#response-example)
 
 <!-- toc stop -->
 
@@ -461,6 +526,10 @@ HTTP/1.1 200 OK
     "fundraisers": {
       "count": 12,
       "url": "https://api.betternow.org/teams/1234567/fundraisers"
+    },
+    "goal": {
+      "cents": 1234500,
+      "currency": "EUR"
     },
     "html_url": "https://www.betternow.org/dk/teams/team-novo",
     "id": 1234567,
@@ -1171,6 +1240,8 @@ A Team is a collection of Fundraisers, who may or may not be raising money in co
 | **donations:url** | *uri* | The url to retrieve details on all donations made via team members | `"https://api.betternow.org/teams/1234567/donations"` |
 | **fundraisers:count** | *integer* | The number of active fundraisers | `12` |
 | **fundraisers:url** | *uri* | The url to retrieve all fundraisers | `"https://api.betternow.org/teams/1234567/fundraisers"` |
+| **goal:cents** | *integer* | Numeric amount in cents | `1234500` |
+| **goal:currency** | *string* | 3 character currency code, as specified in ISO 4217<br/> **pattern:** <code>^([A-Z]{3})$</code> | `"EUR"` |
 | **html_url** | *uri* | The url to the Team page on BetterNow | `"https://www.betternow.org/dk/teams/team-novo"` |
 | **id** | *string* | unique identifier of team | `1234567` |
 | **logo_url** | *uri* | The logo for the team. 92x92 pixels. | `"https://cdn.example.net/logo.png"` |
@@ -1229,6 +1300,10 @@ HTTP/1.1 200 OK
   "fundraisers": {
     "count": 12,
     "url": "https://api.betternow.org/teams/1234567/fundraisers"
+  },
+  "goal": {
+    "cents": 1234500,
+    "currency": "EUR"
   },
   "html_url": "https://www.betternow.org/dk/teams/team-novo",
   "id": 1234567,
@@ -1292,6 +1367,10 @@ HTTP/1.1 200 OK
     "fundraisers": {
       "count": 12,
       "url": "https://api.betternow.org/teams/1234567/fundraisers"
+    },
+    "goal": {
+      "cents": 1234500,
+      "currency": "EUR"
     },
     "html_url": "https://www.betternow.org/dk/teams/team-novo",
     "id": 1234567,
