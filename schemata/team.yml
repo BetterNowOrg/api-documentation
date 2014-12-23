@@ -80,6 +80,9 @@ definitions:
     "$ref": "/schemata/common#/definitions/logo_url"
   partner_data:
     "$ref": "/schemata/common#/definitions/partner_data"
+  goal:
+    description: The monetary goal for this Team. May be 0 cents, in which case it should be treated as if there is no goal.
+    "$ref": "/schemata/common#/definitions/amount"
 description: A Team is a collection of Fundraisers, who may or may not be raising money in connection with a single Event.
 links:
 - description: Info for existing team.
@@ -129,6 +132,8 @@ properties:
     "$ref": "/schemata/team#/definitions/donations"
   fundraisers:
     "$ref": "/schemata/team#/definitions/fundraisers"
+  goal:
+    "$ref": "/schemata/team#/definitions/goal"
   html_url:
     "$ref": "/schemata/team#/definitions/html_url"
   id:
