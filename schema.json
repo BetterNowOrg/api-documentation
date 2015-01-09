@@ -1253,6 +1253,27 @@
         "goal": {
           "description": "The monetary goal for this Team. May be 0 cents, in which case it should be treated as if there is no goal.",
           "$ref": "#/definitions/common/definitions/amount"
+        },
+        "contact_information": {
+          "type": [
+            "object"
+          ],
+          "properties": {
+            "email": {
+              "description": "the public contact email for the team",
+              "example": "myteam@example.com",
+              "type": [
+                "string"
+              ]
+            },
+            "phone": {
+              "description": "the public contact phone for the team",
+              "example": "+4599999999 ex. 1234",
+              "type": [
+                "string"
+              ]
+            }
+          }
         }
       },
       "description": "A Team is a collection of Fundraisers, who may or may not be raising money in connection with a single Event.",
@@ -1314,6 +1335,9 @@
         },
         "cover_media": {
           "$ref": "#/definitions/team/definitions/cover_media"
+        },
+        "contact_information": {
+          "$ref": "#/definitions/team/definitions/contact_information"
         },
         "created_at": {
           "$ref": "#/definitions/team/definitions/created_at"

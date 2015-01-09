@@ -513,6 +513,10 @@ HTTP/1.1 200 OK
         "url": "https://cnd.example.net/image.jpg"
       }
     },
+    "contact_information": {
+      "email": "myteam@example.com",
+      "phone": "+4599999999 ex. 1234"
+    },
     "created_at": "2012-01-01T12:00:00Z",
     "description": "<p>This is really, <b>REALLY</b> great</p> <br><br>",
     "donations": {
@@ -1232,6 +1236,8 @@ A Team is a collection of Fundraisers, who may or may not be raising money in co
 | **cover_media:image:url** | *uri* | The url for the image. On the BetterNow site, the video takes precedence if both exist. 461x306 pixels | `"https://cnd.example.net/image.jpg"` |
 | **cover_media:video:url** | *uri* | The url for the video. Currently only YouTube and Vimeo are supported. Could be blank. | `"https://youtu.be/12345"` |
 | **cover_media:thumb:url** | *uri* | The url for the cover media that should be displayed in e.g. a card view. 120x80 pixels | `"https://cnd.example.net/image.jpg"` |
+| **contact_information:email** | *string* | the public contact email for the team | `"myteam@example.com"` |
+| **contact_information:phone** | *string* | the public contact phone for the team | `"+4599999999 ex. 1234"` |
 | **created_at** | *date-time* | when team was created | `"2012-01-01T12:00:00Z"` |
 | **description** | *string* | Text describing the Team added by the Team Captain. Contains HTML. | `"<p>This is really, <b>REALLY</b> great</p> <br><br>"` |
 | **donations:count** | *integer* | The count of all donations made | `123` |
@@ -1286,6 +1292,10 @@ HTTP/1.1 200 OK
     "thumb": {
       "url": "https://cnd.example.net/image.jpg"
     }
+  },
+  "contact_information": {
+    "email": "myteam@example.com",
+    "phone": "+4599999999 ex. 1234"
   },
   "created_at": "2012-01-01T12:00:00Z",
   "description": "<p>This is really, <b>REALLY</b> great</p> <br><br>",
@@ -1353,6 +1363,10 @@ HTTP/1.1 200 OK
       "thumb": {
         "url": "https://cnd.example.net/image.jpg"
       }
+    },
+    "contact_information": {
+      "email": "myteam@example.com",
+      "phone": "+4599999999 ex. 1234"
     },
     "created_at": "2012-01-01T12:00:00Z",
     "description": "<p>This is really, <b>REALLY</b> great</p> <br><br>",
