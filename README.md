@@ -220,6 +220,7 @@ An Event is something that takes place at a particular time and/or place. It cou
 | **choose_project_to_fundraise_for_url** | *uri* | The url on BetterNow for people who want to fundraise in connection with an event | `"https://www.betternow.org/dk/fundraisers/new?event_id=1234567"` |
 | **cover_media:image:url** | *uri* | The url for the image. On the BetterNow site, the video takes precedence if both exist. 461x306 pixels | `"https://cnd.example.net/image.jpg"` |
 | **cover_media:video:url** | *uri* | The url for the video. Currently only YouTube and Vimeo are supported. Could be blank. | `"https://youtu.be/12345"` |
+| **cover_media:video:oembed_html** | *string* | The OEmbed HTML to display the video. Could be blank. | `"<iframe width=\\\"480\\\" height=\\\"270\\\" src=\\\"https://www.youtube.com/embed/G1JBOSwjN6Q?feature=oembed\\\" frameborder=\\\"0\\\" allowfullscreen></iframe>"` |
 | **cover_media:thumb:url** | *uri* | The url for the cover media that should be displayed in e.g. a card view. 120x80 pixels | `"https://cnd.example.net/image.jpg"` |
 | **created_at** | *date-time* | when event was created | `"2012-01-01T12:00:00Z"` |
 | **description** | *string* | Text describing the Event added by the event organiser. Contains HTML. | `"<p>This is really, <b>REALLY</b> great</p> <br><br>"` |
@@ -261,7 +262,8 @@ HTTP/1.1 200 OK
       "url": "https://cnd.example.net/image.jpg"
     },
     "video": {
-      "url": "https://youtu.be/12345"
+      "url": "https://youtu.be/12345",
+      "oembed_html": "<iframe width=\\\"480\\\" height=\\\"270\\\" src=\\\"https://www.youtube.com/embed/G1JBOSwjN6Q?feature=oembed\\\" frameborder=\\\"0\\\" allowfullscreen></iframe>"
     },
     "thumb": {
       "url": "https://cnd.example.net/image.jpg"
@@ -313,7 +315,8 @@ HTTP/1.1 200 OK
         "url": "https://cnd.example.net/image.jpg"
       },
       "video": {
-        "url": "https://youtu.be/12345"
+        "url": "https://youtu.be/12345",
+        "oembed_html": "<iframe width=\\\"480\\\" height=\\\"270\\\" src=\\\"https://www.youtube.com/embed/G1JBOSwjN6Q?feature=oembed\\\" frameborder=\\\"0\\\" allowfullscreen></iframe>"
       },
       "thumb": {
         "url": "https://cnd.example.net/image.jpg"
@@ -365,7 +368,8 @@ HTTP/1.1 200 OK
         "url": "https://cnd.example.net/image.jpg"
       },
       "video": {
-        "url": "https://youtu.be/12345"
+        "url": "https://youtu.be/12345",
+        "oembed_html": "<iframe width=\\\"480\\\" height=\\\"270\\\" src=\\\"https://www.youtube.com/embed/G1JBOSwjN6Q?feature=oembed\\\" frameborder=\\\"0\\\" allowfullscreen></iframe>"
       },
       "thumb": {
         "url": "https://cnd.example.net/image.jpg"
@@ -431,7 +435,8 @@ HTTP/1.1 200 OK
         "url": "https://cnd.example.net/image.jpg"
       },
       "video": {
-        "url": "https://youtu.be/12345"
+        "url": "https://youtu.be/12345",
+        "oembed_html": "<iframe width=\\\"480\\\" height=\\\"270\\\" src=\\\"https://www.youtube.com/embed/G1JBOSwjN6Q?feature=oembed\\\" frameborder=\\\"0\\\" allowfullscreen></iframe>"
       },
       "thumb": {
         "url": "https://cnd.example.net/image.jpg"
@@ -507,7 +512,8 @@ HTTP/1.1 200 OK
         "url": "https://cnd.example.net/image.jpg"
       },
       "video": {
-        "url": "https://youtu.be/12345"
+        "url": "https://youtu.be/12345",
+        "oembed_html": "<iframe width=\\\"480\\\" height=\\\"270\\\" src=\\\"https://www.youtube.com/embed/G1JBOSwjN6Q?feature=oembed\\\" frameborder=\\\"0\\\" allowfullscreen></iframe>"
       },
       "thumb": {
         "url": "https://cnd.example.net/image.jpg"
@@ -557,6 +563,7 @@ Detailed information about a single Fundraising Page on BetterNow.org
 | **activity_score** | *integer* | A number that can be used for sorting lists of fundraisers. More recently active fundraisers should have a higher activity score than fundraisers who have raised more money long ago. | `987654321` |
 | **cover_media:image:url** | *uri* | The url for the image. On the BetterNow site, the video takes precedence if both exist. 461x306 pixels | `"https://cnd.example.net/image.jpg"` |
 | **cover_media:video:url** | *uri* | The url for the video. Currently only YouTube and Vimeo are supported. Could be blank. | `"https://youtu.be/12345"` |
+| **cover_media:video:oembed_html** | *string* | The OEmbed HTML to display the video. Could be blank. | `"<iframe width=\\\"480\\\" height=\\\"270\\\" src=\\\"https://www.youtube.com/embed/G1JBOSwjN6Q?feature=oembed\\\" frameborder=\\\"0\\\" allowfullscreen></iframe>"` |
 | **cover_media:thumb:url** | *uri* | The url for the cover media that should be displayed in e.g. a card view. 120x80 pixels | `"https://cnd.example.net/image.jpg"` |
 | **created_at** | *date-time* | when resource was created | `"2012-01-01T12:00:00Z"` |
 | **description** | *string* | The text written by the fundraiser owner. Contains HTML. | `"<p>This is really, <b>REALLY</b> great</p> <br><br>"` |
@@ -609,7 +616,8 @@ HTTP/1.1 200 OK
       "url": "https://cnd.example.net/image.jpg"
     },
     "video": {
-      "url": "https://youtu.be/12345"
+      "url": "https://youtu.be/12345",
+      "oembed_html": "<iframe width=\\\"480\\\" height=\\\"270\\\" src=\\\"https://www.youtube.com/embed/G1JBOSwjN6Q?feature=oembed\\\" frameborder=\\\"0\\\" allowfullscreen></iframe>"
     },
     "thumb": {
       "url": "https://cnd.example.net/image.jpg"
@@ -680,7 +688,8 @@ HTTP/1.1 200 OK
         "url": "https://cnd.example.net/image.jpg"
       },
       "video": {
-        "url": "https://youtu.be/12345"
+        "url": "https://youtu.be/12345",
+        "oembed_html": "<iframe width=\\\"480\\\" height=\\\"270\\\" src=\\\"https://www.youtube.com/embed/G1JBOSwjN6Q?feature=oembed\\\" frameborder=\\\"0\\\" allowfullscreen></iframe>"
       },
       "thumb": {
         "url": "https://cnd.example.net/image.jpg"
@@ -768,6 +777,7 @@ An Organisation can receive Donations on BetterNow
 | ------- | ------- | ------- | ------- |
 | **cover_media:image:url** | *uri* | The url for the image. On the BetterNow site, the video takes precedence if both exist. 461x306 pixels | `"https://cnd.example.net/image.jpg"` |
 | **cover_media:video:url** | *uri* | The url for the video. Currently only YouTube and Vimeo are supported. Could be blank. | `"https://youtu.be/12345"` |
+| **cover_media:video:oembed_html** | *string* | The OEmbed HTML to display the video. Could be blank. | `"<iframe width=\\\"480\\\" height=\\\"270\\\" src=\\\"https://www.youtube.com/embed/G1JBOSwjN6Q?feature=oembed\\\" frameborder=\\\"0\\\" allowfullscreen></iframe>"` |
 | **cover_media:thumb:url** | *uri* | The url for the cover media that should be displayed in e.g. a card view. 120x80 pixels | `"https://cnd.example.net/image.jpg"` |
 | **created_at** | *date-time* | When organisation was created | `"2012-01-01T12:00:00Z"` |
 | **description** | *string* | The text written by the Organisation's administrators. Contains HTML | `"HelpNow is a dummy organisation created by BetterNow - to help us doing tutorial videos and screenshots. It is not a real organisation, and you cannot donate here.<br><br><br>"` |
@@ -813,7 +823,8 @@ HTTP/1.1 200 OK
       "url": "https://cnd.example.net/image.jpg"
     },
     "video": {
-      "url": "https://youtu.be/12345"
+      "url": "https://youtu.be/12345",
+      "oembed_html": "<iframe width=\\\"480\\\" height=\\\"270\\\" src=\\\"https://www.youtube.com/embed/G1JBOSwjN6Q?feature=oembed\\\" frameborder=\\\"0\\\" allowfullscreen></iframe>"
     },
     "thumb": {
       "url": "https://cnd.example.net/image.jpg"
@@ -876,7 +887,8 @@ HTTP/1.1 200 OK
         "url": "https://cnd.example.net/image.jpg"
       },
       "video": {
-        "url": "https://youtu.be/12345"
+        "url": "https://youtu.be/12345",
+        "oembed_html": "<iframe width=\\\"480\\\" height=\\\"270\\\" src=\\\"https://www.youtube.com/embed/G1JBOSwjN6Q?feature=oembed\\\" frameborder=\\\"0\\\" allowfullscreen></iframe>"
       },
       "thumb": {
         "url": "https://cnd.example.net/image.jpg"
@@ -942,7 +954,8 @@ HTTP/1.1 200 OK
         "url": "https://cnd.example.net/image.jpg"
       },
       "video": {
-        "url": "https://youtu.be/12345"
+        "url": "https://youtu.be/12345",
+        "oembed_html": "<iframe width=\\\"480\\\" height=\\\"270\\\" src=\\\"https://www.youtube.com/embed/G1JBOSwjN6Q?feature=oembed\\\" frameborder=\\\"0\\\" allowfullscreen></iframe>"
       },
       "thumb": {
         "url": "https://cnd.example.net/image.jpg"
@@ -1031,6 +1044,7 @@ A Project is a specific cause that Users can Fundraise for. An Organisation typi
 | **activity_score** | *integer* | A number that can be used for sorting lists of projects. More recently active projects should have a higher activity score than projects who have raised more money long ago. | `987654321` |
 | **cover_media:image:url** | *uri* | The url for the image. On the BetterNow site, the video takes precedence if both exist. 461x306 pixels | `"https://cnd.example.net/image.jpg"` |
 | **cover_media:video:url** | *uri* | The url for the video. Currently only YouTube and Vimeo are supported. Could be blank. | `"https://youtu.be/12345"` |
+| **cover_media:video:oembed_html** | *string* | The OEmbed HTML to display the video. Could be blank. | `"<iframe width=\\\"480\\\" height=\\\"270\\\" src=\\\"https://www.youtube.com/embed/G1JBOSwjN6Q?feature=oembed\\\" frameborder=\\\"0\\\" allowfullscreen></iframe>"` |
 | **cover_media:thumb:url** | *uri* | The url for the cover media that should be displayed in e.g. a card view. 120x80 pixels | `"https://cnd.example.net/image.jpg"` |
 | **created_at** | *date-time* | When project was created | `"2012-01-01T12:00:00Z"` |
 | **description** | *string* | The text written by the Project's administrators. Contains HTML | `"We need your money for this <b>GREAT</b> project"` |
@@ -1079,7 +1093,8 @@ HTTP/1.1 200 OK
       "url": "https://cnd.example.net/image.jpg"
     },
     "video": {
-      "url": "https://youtu.be/12345"
+      "url": "https://youtu.be/12345",
+      "oembed_html": "<iframe width=\\\"480\\\" height=\\\"270\\\" src=\\\"https://www.youtube.com/embed/G1JBOSwjN6Q?feature=oembed\\\" frameborder=\\\"0\\\" allowfullscreen></iframe>"
     },
     "thumb": {
       "url": "https://cnd.example.net/image.jpg"
@@ -1144,7 +1159,8 @@ HTTP/1.1 200 OK
         "url": "https://cnd.example.net/image.jpg"
       },
       "video": {
-        "url": "https://youtu.be/12345"
+        "url": "https://youtu.be/12345",
+        "oembed_html": "<iframe width=\\\"480\\\" height=\\\"270\\\" src=\\\"https://www.youtube.com/embed/G1JBOSwjN6Q?feature=oembed\\\" frameborder=\\\"0\\\" allowfullscreen></iframe>"
       },
       "thumb": {
         "url": "https://cnd.example.net/image.jpg"
@@ -1235,6 +1251,7 @@ A Team is a collection of Fundraisers, who may or may not be raising money in co
 | **captain:last_name** | *string* | The last name of the user | `"Lastname"` |
 | **cover_media:image:url** | *uri* | The url for the image. On the BetterNow site, the video takes precedence if both exist. 461x306 pixels | `"https://cnd.example.net/image.jpg"` |
 | **cover_media:video:url** | *uri* | The url for the video. Currently only YouTube and Vimeo are supported. Could be blank. | `"https://youtu.be/12345"` |
+| **cover_media:video:oembed_html** | *string* | The OEmbed HTML to display the video. Could be blank. | `"<iframe width=\\\"480\\\" height=\\\"270\\\" src=\\\"https://www.youtube.com/embed/G1JBOSwjN6Q?feature=oembed\\\" frameborder=\\\"0\\\" allowfullscreen></iframe>"` |
 | **cover_media:thumb:url** | *uri* | The url for the cover media that should be displayed in e.g. a card view. 120x80 pixels | `"https://cnd.example.net/image.jpg"` |
 | **contact_information:email** | *string* | the public contact email for the team | `"myteam@example.com"` |
 | **contact_information:phone** | *string* | the public contact phone for the team | `"+4599999999 ex. 1234"` |
@@ -1287,7 +1304,8 @@ HTTP/1.1 200 OK
       "url": "https://cnd.example.net/image.jpg"
     },
     "video": {
-      "url": "https://youtu.be/12345"
+      "url": "https://youtu.be/12345",
+      "oembed_html": "<iframe width=\\\"480\\\" height=\\\"270\\\" src=\\\"https://www.youtube.com/embed/G1JBOSwjN6Q?feature=oembed\\\" frameborder=\\\"0\\\" allowfullscreen></iframe>"
     },
     "thumb": {
       "url": "https://cnd.example.net/image.jpg"
@@ -1358,7 +1376,8 @@ HTTP/1.1 200 OK
         "url": "https://cnd.example.net/image.jpg"
       },
       "video": {
-        "url": "https://youtu.be/12345"
+        "url": "https://youtu.be/12345",
+        "oembed_html": "<iframe width=\\\"480\\\" height=\\\"270\\\" src=\\\"https://www.youtube.com/embed/G1JBOSwjN6Q?feature=oembed\\\" frameborder=\\\"0\\\" allowfullscreen></iframe>"
       },
       "thumb": {
         "url": "https://cnd.example.net/image.jpg"
@@ -1426,7 +1445,8 @@ HTTP/1.1 200 OK
         "url": "https://cnd.example.net/image.jpg"
       },
       "video": {
-        "url": "https://youtu.be/12345"
+        "url": "https://youtu.be/12345",
+        "oembed_html": "<iframe width=\\\"480\\\" height=\\\"270\\\" src=\\\"https://www.youtube.com/embed/G1JBOSwjN6Q?feature=oembed\\\" frameborder=\\\"0\\\" allowfullscreen></iframe>"
       },
       "thumb": {
         "url": "https://cnd.example.net/image.jpg"
@@ -1533,7 +1553,8 @@ HTTP/1.1 200 OK
         "url": "https://cnd.example.net/image.jpg"
       },
       "video": {
-        "url": "https://youtu.be/12345"
+        "url": "https://youtu.be/12345",
+        "oembed_html": "<iframe width=\\\"480\\\" height=\\\"270\\\" src=\\\"https://www.youtube.com/embed/G1JBOSwjN6Q?feature=oembed\\\" frameborder=\\\"0\\\" allowfullscreen></iframe>"
       },
       "thumb": {
         "url": "https://cnd.example.net/image.jpg"
