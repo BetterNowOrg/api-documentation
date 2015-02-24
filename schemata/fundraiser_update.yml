@@ -1,0 +1,50 @@
+---
+"$schema": http://json-schema.org/draft-04/hyper-schema
+title: Fundraiser Update
+definitions:
+  created_at:
+    description: when update was created
+    example: '2012-01-01T12:00:00Z'
+    format: date-time
+    type:
+    - string
+  title:
+    description: The title of the update
+    example: Great job everyone!
+    type:
+      - string
+  body:
+    description: The body of the update, can contain HTML
+    example: "<p>Thanks for all your support - you <strong>rock!</strong>"
+    type:
+      - string
+  avatar_url:
+    "$ref": "/schemata/user#/definitions/avatar_url"
+  updated_at:
+    description: when update was updated
+    example: '2012-01-01T12:00:00Z'
+    format: date-time
+    type:
+    - string
+  owner:
+    description: The user who posted this update (usually fundraiser owner)
+    "$ref": "/schemata/user#/definitions/user_summary"
+  cover_media:
+    "$ref": "/schemata/common#/definitions/cover_media"
+description: An update that was sent to all donors to this fundraiser and posted on the fundraiser page
+properties:
+  body:
+    "$ref": "/schemata/fundraiser_update#/definitions/body"
+  cover_media:
+    "$ref": "/schemata/fundraiser_update#/definitions/cover_media"
+  created_at:
+    "$ref": "/schemata/fundraiser_update#/definitions/created_at"
+  owner:
+    "$ref": "/schemata/fundraiser_update#/definitions/owner"
+  title:
+    "$ref": "/schemata/fundraiser_update#/definitions/title"
+  updated_at:
+    "$ref": "/schemata/fundraiser_update#/definitions/updated_at"
+type:
+- object
+id: schemata/fundraiser_update
