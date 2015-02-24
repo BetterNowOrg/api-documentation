@@ -638,6 +638,18 @@
               "$ref": "#/definitions/donation"
             }
           }
+        },
+        {
+          "description": "List the updates for existing fundraiser.",
+          "href": "/fundraisers/{(%23%2Fdefinitions%2Ffundraiser%2Fdefinitions%2Fidentity)}/updates",
+          "method": "GET",
+          "rel": "fundraiser_update",
+          "title": "List Fundraiser Updates",
+          "targetSchema": {
+            "items": {
+              "$ref": "#/definitions/fundraiser_update"
+            }
+          }
         }
       ],
       "properties": {

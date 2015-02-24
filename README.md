@@ -56,6 +56,9 @@ API](https://devcenter.heroku.com/articles/platform-api-reference)
   * [Fundraising Page List Donations](#fundraising-page-list-donations)
     * [Curl Example](#curl-example)
     * [Response Example](#response-example)
+  * [Fundraising Page List Fundraiser Updates](#fundraising-page-list-fundraiser-updates)
+    * [Curl Example](#curl-example)
+    * [Response Example](#response-example)
 * [Organisation](#organisation)
   * [Attributes](#attributes)
   * [Organisation Info](#organisation-info)
@@ -763,6 +766,53 @@ HTTP/1.1 200 OK
     "created_at": "2012-01-01T12:00:00Z",
     "id": 1234567,
     "name": "Joes Truck Stop",
+    "updated_at": "2012-01-01T12:00:00Z"
+  }
+]
+```
+
+### Fundraising Page List Fundraiser Updates
+List the updates for existing fundraiser.
+
+```
+GET /fundraisers/{fundraiser_id_or_slug}/updates
+```
+
+
+#### Curl Example
+```bash
+$ curl -n -X GET https://api.betternow.org/fundraisers/$FUNDRAISER_ID_OR_SLUG/updates
+
+```
+
+
+#### Response Example
+```
+HTTP/1.1 200 OK
+```
+```json
+[
+  {
+    "body": "<p>Thanks for all your support - you <strong>rock!</strong>",
+    "cover_media": {
+      "image": {
+        "url": "https://cnd.example.net/image.jpg"
+      },
+      "video": {
+        "url": "https://youtu.be/12345",
+        "oembed_html": "<iframe width=\\\"480\\\" height=\\\"270\\\" src=\\\"https://www.youtube.com/embed/G1JBOSwjN6Q?feature=oembed\\\" frameborder=\\\"0\\\" allowfullscreen></iframe>"
+      },
+      "thumb": {
+        "url": "https://cnd.example.net/image.jpg"
+      }
+    },
+    "created_at": "2012-01-01T12:00:00Z",
+    "owner": {
+      "avatar_url": "https://cdn.example.net/avatar.jpg",
+      "first_name": "Firstname",
+      "last_name": "Lastname"
+    },
+    "title": "Great job everyone!",
     "updated_at": "2012-01-01T12:00:00Z"
   }
 ]
