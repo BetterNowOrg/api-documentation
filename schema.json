@@ -757,7 +757,7 @@
           "$ref": "#/definitions/fundraiser_update/definitions/owner"
         },
         "title": {
-          "$ref": "#/definitions/fundraiser_update/definitions/name"
+          "$ref": "#/definitions/fundraiser_update/definitions/title"
         },
         "updated_at": {
           "$ref": "#/definitions/fundraiser_update/definitions/updated_at"

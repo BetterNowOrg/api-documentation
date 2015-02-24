@@ -769,6 +769,7 @@ HTTP/1.1 200 OK
 ```
 
 
+
 ## Organisation
 An Organisation can receive Donations on BetterNow
 
