@@ -110,6 +110,14 @@ links:
   targetSchema:
     items:
       "$ref": "/schemata/donation"
+- description: List the updates for existing fundraiser.
+  href:  "/fundraisers/{(%2Fschemata%2Ffundraiser%23%2Fdefinitions%2Fidentity)}/updates"
+  method: GET
+  rel: fundraiser_update
+  title: List Fundraiser Updates
+  targetSchema:
+    items:
+      "$ref": "/schemata/fundraiser_update"
 properties:
   activity_score:
     "$ref": "/schemata/fundraiser#/definitions/activity_score"
