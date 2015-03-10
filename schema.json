@@ -373,6 +373,30 @@
           "type": [
             "integer"
           ]
+        },
+        "donations": {
+          "description": "Information about the donations made via this Event",
+          "type": [
+            "object"
+          ],
+          "properties": {
+            "count": {
+              "description": "The count of all donations made via this Event",
+              "example": 123,
+              "type": [
+                "integer"
+              ]
+            },
+            "total_donated": {
+              "description": "The monetary total of all donations",
+              "$ref": "#/definitions/common/definitions/amount"
+            },
+            "url": {
+              "description": "The url to retrieve details on all donations made via this Event",
+              "example": "https://api.betternow.org/events/1234567/donations",
+              "$ref": "#/definitions/common/definitions/url"
+            }
+          }
         }
       },
       "description": "An Event is something that takes place at a particular time and/or place. It could be a sporting event like the Copenhagen Marathon 2013, or a holiday like Christmas 2014",
@@ -443,6 +467,9 @@
         },
         "description": {
           "$ref": "#/definitions/event/definitions/description"
+        },
+        "donations": {
+          "$ref": "#/definitions/event/definitions/donations"
         },
         "end_date": {
           "$ref": "#/definitions/event/definitions/end_date"

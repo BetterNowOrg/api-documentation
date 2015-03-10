@@ -227,6 +227,10 @@ An Event is something that takes place at a particular time and/or place. It cou
 | **cover_media:thumb:url** | *uri* | The url for the cover media that should be displayed in e.g. a card view. 120x80 pixels | `"https://cnd.example.net/image.jpg"` |
 | **created_at** | *date-time* | when event was created | `"2012-01-01T12:00:00Z"` |
 | **description** | *string* | Text describing the Event added by the event organiser. Contains HTML. | `"<p>This is really, <b>REALLY</b> great</p> <br><br>"` |
+| **donations:count** | *integer* | The count of all donations made via this Event | `123` |
+| **donations:total_donated:cents** | *integer* | Numeric amount in cents | `1234500` |
+| **donations:total_donated:currency** | *string* | 3 character currency code, as specified in ISO 4217<br/> **pattern:** <code>^([A-Z]{3})$</code> | `"EUR"` |
+| **donations:url** | *uri* | The url to retrieve details on all donations made via this Event | `"https://api.betternow.org/events/1234567/donations"` |
 | **end_date** | *date-time* | The date when the Event ends. May be blank in the case of a single day event. | `"2012-01-01"` |
 | **html_url** | *uri* | The url to the Event page on BetterNow | `"https://www.betternow.org/dk/events/copenhagen-marathon-2013"` |
 | **id** | *string* | unique identifier of event | `1234567` |
@@ -274,6 +278,14 @@ HTTP/1.1 200 OK
   },
   "created_at": "2012-01-01T12:00:00Z",
   "description": "<p>This is really, <b>REALLY</b> great</p> <br><br>",
+  "donations": {
+    "count": 123,
+    "total_donated": {
+      "cents": 1234500,
+      "currency": "EUR"
+    },
+    "url": "https://api.betternow.org/events/1234567/donations"
+  },
   "end_date": "2012-01-01",
   "html_url": "https://www.betternow.org/dk/events/copenhagen-marathon-2013",
   "id": 1234567,
@@ -327,6 +339,14 @@ HTTP/1.1 200 OK
     },
     "created_at": "2012-01-01T12:00:00Z",
     "description": "<p>This is really, <b>REALLY</b> great</p> <br><br>",
+    "donations": {
+      "count": 123,
+      "total_donated": {
+        "cents": 1234500,
+        "currency": "EUR"
+      },
+      "url": "https://api.betternow.org/events/1234567/donations"
+    },
     "end_date": "2012-01-01",
     "html_url": "https://www.betternow.org/dk/events/copenhagen-marathon-2013",
     "id": 1234567,
