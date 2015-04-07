@@ -88,6 +88,20 @@ definitions:
         description: The url to retrieve details on all donations made via this Event
         example: 'https://api.betternow.org/events/1234567/donations'
         "$ref": "/schemata/common#/definitions/url"
+  fundraisers:
+    description: Information about the fundraisers for this event
+    type:
+      - object
+    properties:
+      count:
+        description: The number of active fundraisers
+        example: 12
+        type:
+          - integer
+      url:
+        description: The url to retrieve all fundraisers
+        example: 'https://api.betternow.org/events/1234567/fundraisers'
+        "$ref": "/schemata/common#/definitions/url"
 description: An Event is something that takes place at a particular time and/or place. It could be a sporting event like the Copenhagen Marathon 2013, or a holiday like Christmas 2014
 links:
 - description: Info for existing event.
@@ -139,6 +153,8 @@ properties:
     "$ref": "/schemata/event#/definitions/donations"
   end_date:
     "$ref": "/schemata/event#/definitions/end_date"
+  fundraisers:
+    "$ref": "/schemata/event#/definitions/fundraisers"
   html_url:
     "$ref": "/schemata/event#/definitions/html_url"
   id:
