@@ -232,6 +232,8 @@ An Event is something that takes place at a particular time and/or place. It cou
 | **donations:total_donated:currency** | *string* | 3 character currency code, as specified in ISO 4217<br/> **pattern:** <code>^([A-Z]{3})$</code> | `"EUR"` |
 | **donations:url** | *uri* | The url to retrieve details on all donations made via this Event | `"https://api.betternow.org/events/1234567/donations"` |
 | **end_date** | *date-time* | The date when the Event ends. May be blank in the case of a single day event. | `"2012-01-01"` |
+| **fundraisers:count** | *integer* | The number of active fundraisers | `12` |
+| **fundraisers:url** | *uri* | The url to retrieve all fundraisers | `"https://api.betternow.org/events/1234567/fundraisers"` |
 | **html_url** | *uri* | The url to the Event page on BetterNow | `"https://www.betternow.org/dk/events/copenhagen-marathon-2013"` |
 | **id** | *string* | unique identifier of event | `1234567` |
 | **location:city** | *string* | The name of a city | `"København"` |
@@ -287,6 +289,10 @@ HTTP/1.1 200 OK
     "url": "https://api.betternow.org/events/1234567/donations"
   },
   "end_date": "2012-01-01",
+  "fundraisers": {
+    "count": 12,
+    "url": "https://api.betternow.org/events/1234567/fundraisers"
+  },
   "html_url": "https://www.betternow.org/dk/events/copenhagen-marathon-2013",
   "id": 1234567,
   "location": {
@@ -348,6 +354,10 @@ HTTP/1.1 200 OK
       "url": "https://api.betternow.org/events/1234567/donations"
     },
     "end_date": "2012-01-01",
+    "fundraisers": {
+      "count": 12,
+      "url": "https://api.betternow.org/events/1234567/fundraisers"
+    },
     "html_url": "https://www.betternow.org/dk/events/copenhagen-marathon-2013",
     "id": 1234567,
     "location": {
