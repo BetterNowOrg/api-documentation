@@ -149,8 +149,38 @@ Requests` status.
 List requests will return a `Content-Range` header indicating the range of values
 returned. Large lists may require additional requests to retrieve. If a list
 response has been truncated you will receive a `206 Partial Content` status and
-the `Next-Range` will be set header set. To retrieve the next range, repeat the request with
-the `Range` header set to the value of the previous request’s `Next-Range` header.
+the `Next-Range` header will be set.
+
+To retrieve the next range, repeat the request with the `Range` header set to
+the value of the previous request’s `Next-Range` header and the `Range-Unit:
+items` header, e.g:
+
+```
+# Initial request to paginated resource
+
+curl -n -sS -i -H 'Accept: application/vnd.betternow+json; version=1' \
+  https://api.betternow.org/fundraisers
+
+HTTP/1.1 206 Partial Content
+#... ommitted headers
+Accept-Ranges: items
+Content-Range: 0-49/7167
+Link: <https://api.betternow.org/fundraisers>; rel="next"; items="50-7216", <https://api.betternow.org/fundraisers>; rel="last"; items="7150-14316"
+Next-Range: 50-7216
+Range-Unit: items
+Status: 206 Partial Content
+#... ommitted headers
+
+#... omitted body
+
+# Subsequent request to paginated resource
+curl -n -sS -i -H 'Accept: application/vnd.betternow+json; version=1' \
+  -H 'Range-Unit: items' \
+  -H 'Range: 50-7216'
+  https://api.betternow.org/fundraisers
+```
+
+The `rel=next` relation in the `Link` header may also be used.
 
 If the list is empty, a `204 No Content` status with the correct range headers
 and an empty request body will be returned.
