@@ -67,9 +67,9 @@ To retrieve the next range, repeat the request with the `Range` header set to
 the value of the previous request’s `Next-Range` header and the `Range-Unit:
 items` header, e.g:
 
-```
-# Initial request to paginated resource
+### Initial request to paginated resource
 
+```
 curl -n -sS -i -H 'Accept: application/vnd.betternow+json; version=1' \
   https://api.betternow.org/fundraisers
 
@@ -81,14 +81,13 @@ Link: <https://api.betternow.org/fundraisers>; rel="next"; items="50-7216", <htt
 Next-Range: 50-7216
 Range-Unit: items
 Status: 206 Partial Content
-#... ommitted headers
+```
 
-#... omitted body
-
-# Subsequent request to paginated resource
+### Subsequent request to paginated resource
+```
 curl -n -sS -i -H 'Accept: application/vnd.betternow+json; version=1' \
   -H 'Range-Unit: items' \
-  -H 'Range: 50-7216'
+  -H 'Range: 50-7216' \
   https://api.betternow.org/fundraisers
 ```
 
