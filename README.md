@@ -211,7 +211,7 @@ machine api.betternow.org
 
 
 curl -n -sS -i -H 'Accept: application/vnd.betternow+json; version=1' \
-  https://api.betternow.org/fundraisers/alot
+  https://api.betternow.org/organisations/<YOUR ORGANISATION SLUG OR ID>
 ```
 
 ```html
