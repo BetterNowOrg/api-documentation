@@ -4,7 +4,7 @@ set -o pipefail
 message=${1:-"update TOC and publish update"}
 
 bin/rake
-toc
+doctoc README.md --notitle --github --maxlevel 2
 git add --all
 git commit -m "$message"
-git push
+# git push

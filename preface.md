@@ -15,7 +15,8 @@ The design of our API is heavily informed by [Heroku's HTTP API Design
 Guide](https://github.com/interagent/http-api-design) and their [Platform
 API](https://devcenter.heroku.com/articles/platform-api-reference)
 
-<!-- toc -->
+<!-- START doctoc -->
+<!-- END doctoc -->
 
 ## Authentication
 

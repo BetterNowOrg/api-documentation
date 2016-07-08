@@ -15,97 +15,26 @@ The design of our API is heavily informed by [Heroku's HTTP API Design
 Guide](https://github.com/interagent/http-api-design) and their [Platform
 API](https://devcenter.heroku.com/articles/platform-api-reference)
 
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
 
-<!-- toc -->
+- [Authentication](#authentication)
+- [Caching](#caching)
+- [Clients](#clients)
+- [CORS](#cors)
+- [Rate Limits](#rate-limits)
+- [Pagination via Ranges](#pagination-via-ranges)
+- [JSON Schema](#json-schema)
+- ["Sub-resources"](#sub-resources)
+- [Example Usage](#example-usage)
+- [Event](#event)
+- [Fundraising Page](#fundraising-page)
+- [Organisation](#organisation)
+- [Project](#project)
+- [Team](#team)
 
-* [Authentication](#authentication)
-* [Caching](#caching)
-* [Clients](#clients)
-* [CORS](#cors)
-* [Rate Limits](#rate-limits)
-* [Pagination via Ranges](#pagination-via-ranges)
-  * [Initial request to paginated resource](#initial-request-to-paginated-resource)
-  * [Subsequent request to paginated resource](#subsequent-request-to-paginated-resource)
-* [JSON Schema](#json-schema)
-* ["Sub-resources"](#sub-resources)
-* [Example Usage](#example-usage)
-* [Event](#event)
-  * [Attributes](#attributes)
-  * [Event Info](#event-info)
-    * [Curl Example](#curl-example)
-    * [Response Example](#response-example)
-  * [Event List](#event-list)
-    * [Curl Example](#curl-example)
-    * [Response Example](#response-example)
-  * [Event List Projects](#event-list-projects)
-    * [Curl Example](#curl-example)
-    * [Response Example](#response-example)
-  * [Event List Fundraisers](#event-list-fundraisers)
-    * [Curl Example](#curl-example)
-    * [Response Example](#response-example)
-  * [Event List Teams](#event-list-teams)
-    * [Curl Example](#curl-example)
-    * [Response Example](#response-example)
-* [Fundraising Page](#fundraising-page)
-  * [Attributes](#attributes)
-  * [Fundraising Page Info](#fundraising-page-info)
-    * [Curl Example](#curl-example)
-    * [Response Example](#response-example)
-  * [Fundraising Page List](#fundraising-page-list)
-    * [Curl Example](#curl-example)
-    * [Response Example](#response-example)
-  * [Fundraising Page List Donations](#fundraising-page-list-donations)
-    * [Curl Example](#curl-example)
-    * [Response Example](#response-example)
-  * [Fundraising Page List Fundraiser Updates](#fundraising-page-list-fundraiser-updates)
-    * [Curl Example](#curl-example)
-    * [Response Example](#response-example)
-* [Organisation](#organisation)
-  * [Attributes](#attributes)
-  * [Organisation Info](#organisation-info)
-    * [Curl Example](#curl-example)
-    * [Response Example](#response-example)
-  * [Organisation List Projects](#organisation-list-projects)
-    * [Curl Example](#curl-example)
-    * [Response Example](#response-example)
-  * [Organisation List Fundraisers](#organisation-list-fundraisers)
-    * [Curl Example](#curl-example)
-    * [Response Example](#response-example)
-  * [Organisation List Donations](#organisation-list-donations)
-    * [Curl Example](#curl-example)
-    * [Response Example](#response-example)
-* [Project](#project)
-  * [Attributes](#attributes)
-  * [Project Info](#project-info)
-    * [Curl Example](#curl-example)
-    * [Response Example](#response-example)
-  * [Project List Fundraisers](#project-list-fundraisers)
-    * [Curl Example](#curl-example)
-    * [Response Example](#response-example)
-  * [Project List Donations](#project-list-donations)
-    * [Curl Example](#curl-example)
-    * [Response Example](#response-example)
-* [Team](#team)
-  * [Attributes](#attributes)
-  * [Team Info](#team-info)
-    * [Curl Example](#curl-example)
-    * [Response Example](#response-example)
-  * [Team List](#team-list)
-    * [Curl Example](#curl-example)
-    * [Response Example](#response-example)
-  * [Team List Fundraisers](#team-list-fundraisers)
-    * [Curl Example](#curl-example)
-    * [Response Example](#response-example)
-  * [Team List Donations](#team-list-donations)
-    * [Curl Example](#curl-example)
-    * [Response Example](#response-example)
-  * [Team List Projects](#team-list-projects)
-    * [Curl Example](#curl-example)
-    * [Response Example](#response-example)
-
-<!-- toc stop -->
-
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
 ## Authentication
 
@@ -211,7 +140,7 @@ machine api.betternow.org
 
 
 curl -n -sS -i -H 'Accept: application/vnd.betternow+json; version=1' \
-  https://api.betternow.org/organisations/<YOUR ORGANISATION SLUG OR ID>
+  https://api.betternow.org/fundraisers/alot
 ```
 
 ```html
@@ -219,19 +148,14 @@ curl -n -sS -i -H 'Accept: application/vnd.betternow+json; version=1' \
 <html>
   <head>
     <meta charset="utf-8">
-    <title>API example usage</title>
+    <title>CORS test page</title>
     <script>
       var Base64={_keyStr:"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=",encode:function(e){var t="";var n,r,i,s,o,u,a;var f=0;e=Base64._utf8_encode(e);while(f<e.length){n=e.charCodeAt(f++);r=e.charCodeAt(f++);i=e.charCodeAt(f++);s=n>>2;o=(n&3)<<4|r>>4;u=(r&15)<<2|i>>6;a=i&63;if(isNaN(r)){u=a=64}else if(isNaN(i)){a=64}t=t+this._keyStr.charAt(s)+this._keyStr.charAt(o)+this._keyStr.charAt(u)+this._keyStr.charAt(a)}return t},decode:function(e){var t="";var n,r,i;var s,o,u,a;var f=0;e=e.replace(/[^A-Za-z0-9\+\/\=]/g,"");while(f<e.length){s=this._keyStr.indexOf(e.charAt(f++));o=this._keyStr.indexOf(e.charAt(f++));u=this._keyStr.indexOf(e.charAt(f++));a=this._keyStr.indexOf(e.charAt(f++));n=s<<2|o>>4;r=(o&15)<<4|u>>2;i=(u&3)<<6|a;t=t+String.fromCharCode(n);if(u!=64){t=t+String.fromCharCode(r)}if(a!=64){t=t+String.fromCharCode(i)}}t=Base64._utf8_decode(t);return t},_utf8_encode:function(e){e=e.replace(/\r\n/g,"\n");var t="";for(var n=0;n<e.length;n++){var r=e.charCodeAt(n);if(r<128){t+=String.fromCharCode(r)}else if(r>127&&r<2048){t+=String.fromCharCode(r>>6|192);t+=String.fromCharCode(r&63|128)}else{t+=String.fromCharCode(r>>12|224);t+=String.fromCharCode(r>>6&63|128);t+=String.fromCharCode(r&63|128)}}return t},_utf8_decode:function(e){var t="";var n=0;var r=c1=c2=0;while(n<e.length){r=e.charCodeAt(n);if(r<128){t+=String.fromCharCode(r);n++}else if(r>191&&r<224){c2=e.charCodeAt(n+1);t+=String.fromCharCode((r&31)<<6|c2&63);n+=2}else{c2=e.charCodeAt(n+1);c3=e.charCodeAt(n+2);t+=String.fromCharCode((r&15)<<12|(c2&63)<<6|c3&63);n+=3}}return t}}
 
-      // BEGIN CONFIGURATION - edit as appropriate
-
       var publishableKey = '<YOUR API KEY>';
-      var endpoint       = 'https://api.betternow.org/organisations/<YOUR ORGANISATION SLUG OR ID>';
-
-      // END CONFIGURATION
 
       var xhr = new XMLHttpRequest();
-      xhr.open("get", endpoint, true);
+      xhr.open("get", "https://api.betternow.org/fundraisers/alot", true);
       xhr.setRequestHeader('Authorization', 'Bearer ' + Base64.encode(publishableKey + ':'))
       xhr.setRequestHeader('Accept', 'application/vnd.betternow+json; version=1');
       xhr.onload = function() {
@@ -1708,3 +1632,6 @@ HTTP/1.1 200 OK
   }
 ]
 ```
+
+
+
