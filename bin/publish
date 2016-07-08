@@ -7,4 +7,4 @@ bin/rake
 doctoc README.md --notitle --github --maxlevel 2
 git add --all
 git commit -m "$message"
-# git push
+git push
