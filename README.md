@@ -46,17 +46,19 @@ The API key must be Base64 encoded and passed as a `Bearer` token in the
 `938a145dd2674b83f05de469a4efcdc52828960f`, the authorization header would be
 `Authorization: Bearer OTM4YTE0NWRkMjY3NGI4M2YwNWRlNDY5YTRlZmNkYzUyODI4OTYwZg==`
 
-API keys will be scoped to specific top-level resources. Authenticated requests
-for other resources will return a `403 Forbidden` response.
+API keys grant access to specific resources such as Charities, Events, etc.
+Authenticated requests for other resources will return a `403 Forbidden`
+response.
 
 ## Caching
 
 All responses include an `ETag` (or Entity Tag) header, identifying the specific
-version of a returned resource. You may use this value to check for changes to a
+version of a returned resource. Use this value to check for changes to a
 resource by repeating the request and passing the `ETag` value in the
-`If-None-Match` header. If the resource has not changed, a `304 Not Modified` status
-will be returned with an empty body. If the resource has changed, the request
-will proceed normally.
+`If-None-Match` header. If the resource has not changed, a `304 Not Modified`
+status will be returned with an empty body. If the resource has changed, the
+request will proceed normally. Web browser api clients should do this
+automatically via [HTTP Conditional Get](https://tools.ietf.org/html/rfc7232)
 
 ## Clients
 
@@ -117,7 +119,8 @@ and an empty request body will be returned.
 
 ## JSON Schema
 
-The machine-readable version of this README is [schema.json](schema.json). You
+The machine-readable version of this README is
+[schema.json](https://raw.githubusercontent.com/BetterNowOrg/api-documentation/master/schema.json). You
 can use tools like [committee](https://github.com/interagent/committee) with the
 schema to test and stub a local version of the api when you're developing your
 client. I'm sure there are other tools for other languages - feel free to submit
