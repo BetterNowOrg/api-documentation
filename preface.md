@@ -35,11 +35,12 @@ response.
 ## Caching
 
 All responses include an `ETag` (or Entity Tag) header, identifying the specific
-version of a returned resource. You may use this value to check for changes to a
+version of a returned resource. Use this value to check for changes to a
 resource by repeating the request and passing the `ETag` value in the
-`If-None-Match` header. If the resource has not changed, a `304 Not Modified` status
-will be returned with an empty body. If the resource has changed, the request
-will proceed normally.
+`If-None-Match` header. If the resource has not changed, a `304 Not Modified`
+status will be returned with an empty body. If the resource has changed, the
+request will proceed normally. Web browser api clients should do this
+automatically via [HTTP Conditional Get](https://tools.ietf.org/html/rfc7232)
 
 ## Clients
 
