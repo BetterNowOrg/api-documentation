@@ -28,8 +28,9 @@ The API key must be Base64 encoded and passed as a `Bearer` token in the
 `938a145dd2674b83f05de469a4efcdc52828960f`, the authorization header would be
 `Authorization: Bearer OTM4YTE0NWRkMjY3NGI4M2YwNWRlNDY5YTRlZmNkYzUyODI4OTYwZg==`
 
-API keys will be scoped to specific top-level resources. Authenticated requests
-for other resources will return a `403 Forbidden` response.
+API keys grant access to specific resources such as Charities, Events, etc.
+Authenticated requests for other resources will return a `403 Forbidden`
+response.
 
 ## Caching
 
