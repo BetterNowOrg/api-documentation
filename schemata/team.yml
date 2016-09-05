@@ -78,6 +78,19 @@ definitions:
     description: The logo for the team. 92x92 pixels.
     example: 'https://cdn.example.net/logo.png'
     "$ref": "/schemata/common#/definitions/logo_url"
+  team_summary:
+    description: A summarized version of the Team for use in other resources
+    type:
+      - object
+    properties:
+      id:
+        "$ref": "/schemata/team#/definitions/id"
+      name:
+        "$ref": "/schemata/team#/definitions/name"
+      url:
+        "$ref": "/schemata/team#/definitions/url"
+      html_url:
+        "$ref": "/schemata/team#/definitions/html_url"
   partner_data:
     "$ref": "/schemata/common#/definitions/partner_data"
   goal:

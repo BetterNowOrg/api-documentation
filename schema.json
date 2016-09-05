@@ -417,6 +417,26 @@
               "$ref": "#/definitions/common/definitions/url"
             }
           }
+        },
+        "event_summary": {
+          "description": "A summarized version of the Event for use in other resources",
+          "type": [
+            "object"
+          ],
+          "properties": {
+            "id": {
+              "$ref": "#/definitions/event/definitions/id"
+            },
+            "name": {
+              "$ref": "#/definitions/event/definitions/name"
+            },
+            "url": {
+              "$ref": "#/definitions/event/definitions/url"
+            },
+            "html_url": {
+              "$ref": "#/definitions/event/definitions/html_url"
+            }
+          }
         }
       },
       "description": "An Event is something that takes place at a particular time and/or place. It could be a sporting event like the Copenhagen Marathon 2013, or a holiday like Christmas 2014",
@@ -618,6 +638,15 @@
         "recipient": {
           "$ref": "#/definitions/common/definitions/recipient"
         },
+        "team": {
+          "$ref": "#/definitions/team/definitions/team_summary"
+        },
+        "event": {
+          "$ref": "#/definitions/event/definitions/event_summary"
+        },
+        "project": {
+          "$ref": "#/definitions/project/definitions/project_summary"
+        },
         "slug": {
           "description": "The current url path component to identify the fundraiser. This can, and does, change.",
           "example": "firstname-lastnames-fundraiser-for-helpnow",
@@ -744,6 +773,15 @@
         },
         "recipient": {
           "$ref": "#/definitions/fundraiser/definitions/recipient"
+        },
+        "team": {
+          "$ref": "#/definitions/team/definitions/team_summary"
+        },
+        "project": {
+          "$ref": "#/definitions/project/definitions/project_summary"
+        },
+        "event": {
+          "$ref": "#/definitions/event/definitions/event_summary"
         },
         "slug": {
           "$ref": "#/definitions/fundraiser/definitions/slug"
@@ -1383,6 +1421,26 @@
               "description": "The url to retrieve all fundraisers",
               "example": "https://api.betternow.org/teams/1234567/fundraisers",
               "$ref": "#/definitions/common/definitions/url"
+            }
+          }
+        },
+        "team_summary": {
+          "description": "A summarized version of the Team for use in other resources",
+          "type": [
+            "object"
+          ],
+          "properties": {
+            "id": {
+              "$ref": "#/definitions/team/definitions/id"
+            },
+            "name": {
+              "$ref": "#/definitions/team/definitions/name"
+            },
+            "url": {
+              "$ref": "#/definitions/team/definitions/url"
+            },
+            "html_url": {
+              "$ref": "#/definitions/team/definitions/html_url"
             }
           }
         },

@@ -61,6 +61,12 @@ definitions:
       - "$ref": "/schemata/fundraiser#/definitions/slug"
   recipient:
     "$ref": "/schemata/common#/definitions/recipient"
+  team:
+    "$ref": "/schemata/team#/definitions/team_summary"
+  event:
+    "$ref": "/schemata/event#/definitions/event_summary"
+  project:
+    "$ref": "/schemata/project#/definitions/project_summary"
   slug:
     description: The current url path component to identify the fundraiser. This can, and does, change.
     example: firstname-lastnames-fundraiser-for-helpnow
@@ -147,6 +153,12 @@ properties:
     "$ref": "/schemata/fundraiser#/definitions/partner_data"
   recipient:
     "$ref": "/schemata/fundraiser#/definitions/recipient"
+  team:
+    "$ref": "/schemata/team#/definitions/team_summary"
+  project:
+    "$ref": "/schemata/project#/definitions/project_summary"
+  event:
+    "$ref": "/schemata/event#/definitions/event_summary"
   slug:
     "$ref": "/schemata/fundraiser#/definitions/slug"
   updated_at:

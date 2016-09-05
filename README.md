@@ -15,26 +15,8 @@ The design of our API is heavily informed by [Heroku's HTTP API Design
 Guide](https://github.com/interagent/http-api-design) and their [Platform
 API](https://devcenter.heroku.com/articles/platform-api-reference)
 
-<!-- START doctoc generated TOC please keep comment here to allow auto update -->
-<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-
-
-- [Authentication](#authentication)
-- [Caching](#caching)
-- [Clients](#clients)
-- [CORS](#cors)
-- [Rate Limits](#rate-limits)
-- [Pagination via Ranges](#pagination-via-ranges)
-- [JSON Schema](#json-schema)
-- ["Sub-resources"](#sub-resources)
-- [Example Usage](#example-usage)
-- [Event](#event)
-- [Fundraising Page](#fundraising-page)
-- [Organisation](#organisation)
-- [Project](#project)
-- [Team](#team)
-
-<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+<!-- START doctoc -->
+<!-- END doctoc -->
 
 ## Authentication
 
@@ -469,6 +451,24 @@ HTTP/1.1 200 OK
       "url": "https://api.betternow.org/organisations/1234567",
       "html_url": "https://www.betternow.org/dk/helpnow"
     },
+    "team": {
+      "id": 1234567,
+      "name": "Team NOVO",
+      "url": "https://api.betternow.org/team/1234567",
+      "html_url": "https://www.betternow.org/dk/teams/team-novo"
+    },
+    "project": {
+      "id": 1234567,
+      "name": "HelpNows generelle arbejde",
+      "url": "https://api.betternow.org/projects/1234567",
+      "html_url": "https://www.betternow.org/dk/helpnow-projekt"
+    },
+    "event": {
+      "id": 1234567,
+      "name": "Copenhagen Marathon 2013",
+      "url": "https://api.betternow.org/events/1234567",
+      "html_url": "https://www.betternow.org/dk/events/copenhagen-marathon-2013"
+    },
     "slug": "firstname-lastnames-fundraiser-for-helpnow",
     "updated_at": "2012-01-01T12:00:00Z",
     "url": "https://api.betternow.org/fundraisers/1234567"
@@ -582,6 +582,18 @@ Detailed information about a single Fundraising Page on BetterNow.org
 | **recipient:name** | *string* | The name of the Organisation | `"HelpNow"` |
 | **recipient:url** | *uri* |  | `"https://api.betternow.org/organisations/1234567"` |
 | **recipient:html_url** | *uri* | The current url to view the organisation page on BetterNow. This can, and does, change. Requests to old urls will be redirect to the current url. | `"https://www.betternow.org/dk/helpnow"` |
+| **team:id** | *string* | unique identifier of team | `1234567` |
+| **team:name** | *string* | the name of the Team | `"Team NOVO"` |
+| **team:url** | *uri* |  | `"https://api.betternow.org/team/1234567"` |
+| **team:html_url** | *uri* | The url to the Team page on BetterNow | `"https://www.betternow.org/dk/teams/team-novo"` |
+| **project:id** | *string* | Unique identifier of project | `1234567` |
+| **project:name** | *string* | The name of the Project | `"HelpNows generelle arbejde"` |
+| **project:url** | *uri* |  | `"https://api.betternow.org/projects/1234567"` |
+| **project:html_url** | *uri* | The current url to view the project page on BetterNow. This can, and does, change. Requests to old urls will be redirect to the current url. | `"https://www.betternow.org/dk/helpnow-projekt"` |
+| **event:id** | *string* | unique identifier of event | `1234567` |
+| **event:name** | *string* | the name of the Event | `"Copenhagen Marathon 2013"` |
+| **event:url** | *uri* |  | `"https://api.betternow.org/events/1234567"` |
+| **event:html_url** | *uri* | The url to the Event page on BetterNow | `"https://www.betternow.org/dk/events/copenhagen-marathon-2013"` |
 | **slug** | *string* | The current url path component to identify the fundraiser. This can, and does, change.<br/> **pattern:** <code>^([a-z0-9-]{2,})$</code> | `"firstname-lastnames-fundraiser-for-helpnow"` |
 | **updated_at** | *date-time* | when resource was updated | `"2012-01-01T12:00:00Z"` |
 | **url** | *uri* |  | `"https://api.betternow.org/fundraisers/1234567"` |
@@ -649,6 +661,24 @@ HTTP/1.1 200 OK
     "name": "HelpNow",
     "url": "https://api.betternow.org/organisations/1234567",
     "html_url": "https://www.betternow.org/dk/helpnow"
+  },
+  "team": {
+    "id": 1234567,
+    "name": "Team NOVO",
+    "url": "https://api.betternow.org/team/1234567",
+    "html_url": "https://www.betternow.org/dk/teams/team-novo"
+  },
+  "project": {
+    "id": 1234567,
+    "name": "HelpNows generelle arbejde",
+    "url": "https://api.betternow.org/projects/1234567",
+    "html_url": "https://www.betternow.org/dk/helpnow-projekt"
+  },
+  "event": {
+    "id": 1234567,
+    "name": "Copenhagen Marathon 2013",
+    "url": "https://api.betternow.org/events/1234567",
+    "html_url": "https://www.betternow.org/dk/events/copenhagen-marathon-2013"
   },
   "slug": "firstname-lastnames-fundraiser-for-helpnow",
   "updated_at": "2012-01-01T12:00:00Z",
@@ -721,6 +751,24 @@ HTTP/1.1 200 OK
       "name": "HelpNow",
       "url": "https://api.betternow.org/organisations/1234567",
       "html_url": "https://www.betternow.org/dk/helpnow"
+    },
+    "team": {
+      "id": 1234567,
+      "name": "Team NOVO",
+      "url": "https://api.betternow.org/team/1234567",
+      "html_url": "https://www.betternow.org/dk/teams/team-novo"
+    },
+    "project": {
+      "id": 1234567,
+      "name": "HelpNows generelle arbejde",
+      "url": "https://api.betternow.org/projects/1234567",
+      "html_url": "https://www.betternow.org/dk/helpnow-projekt"
+    },
+    "event": {
+      "id": 1234567,
+      "name": "Copenhagen Marathon 2013",
+      "url": "https://api.betternow.org/events/1234567",
+      "html_url": "https://www.betternow.org/dk/events/copenhagen-marathon-2013"
     },
     "slug": "firstname-lastnames-fundraiser-for-helpnow",
     "updated_at": "2012-01-01T12:00:00Z",
@@ -1036,6 +1084,24 @@ HTTP/1.1 200 OK
       "url": "https://api.betternow.org/organisations/1234567",
       "html_url": "https://www.betternow.org/dk/helpnow"
     },
+    "team": {
+      "id": 1234567,
+      "name": "Team NOVO",
+      "url": "https://api.betternow.org/team/1234567",
+      "html_url": "https://www.betternow.org/dk/teams/team-novo"
+    },
+    "project": {
+      "id": 1234567,
+      "name": "HelpNows generelle arbejde",
+      "url": "https://api.betternow.org/projects/1234567",
+      "html_url": "https://www.betternow.org/dk/helpnow-projekt"
+    },
+    "event": {
+      "id": 1234567,
+      "name": "Copenhagen Marathon 2013",
+      "url": "https://api.betternow.org/events/1234567",
+      "html_url": "https://www.betternow.org/dk/events/copenhagen-marathon-2013"
+    },
     "slug": "firstname-lastnames-fundraiser-for-helpnow",
     "updated_at": "2012-01-01T12:00:00Z",
     "url": "https://api.betternow.org/fundraisers/1234567"
@@ -1240,6 +1306,24 @@ HTTP/1.1 200 OK
       "name": "HelpNow",
       "url": "https://api.betternow.org/organisations/1234567",
       "html_url": "https://www.betternow.org/dk/helpnow"
+    },
+    "team": {
+      "id": 1234567,
+      "name": "Team NOVO",
+      "url": "https://api.betternow.org/team/1234567",
+      "html_url": "https://www.betternow.org/dk/teams/team-novo"
+    },
+    "project": {
+      "id": 1234567,
+      "name": "HelpNows generelle arbejde",
+      "url": "https://api.betternow.org/projects/1234567",
+      "html_url": "https://www.betternow.org/dk/helpnow-projekt"
+    },
+    "event": {
+      "id": 1234567,
+      "name": "Copenhagen Marathon 2013",
+      "url": "https://api.betternow.org/events/1234567",
+      "html_url": "https://www.betternow.org/dk/events/copenhagen-marathon-2013"
     },
     "slug": "firstname-lastnames-fundraiser-for-helpnow",
     "updated_at": "2012-01-01T12:00:00Z",
@@ -1526,6 +1610,24 @@ HTTP/1.1 200 OK
       "name": "HelpNow",
       "url": "https://api.betternow.org/organisations/1234567",
       "html_url": "https://www.betternow.org/dk/helpnow"
+    },
+    "team": {
+      "id": 1234567,
+      "name": "Team NOVO",
+      "url": "https://api.betternow.org/team/1234567",
+      "html_url": "https://www.betternow.org/dk/teams/team-novo"
+    },
+    "project": {
+      "id": 1234567,
+      "name": "HelpNows generelle arbejde",
+      "url": "https://api.betternow.org/projects/1234567",
+      "html_url": "https://www.betternow.org/dk/helpnow-projekt"
+    },
+    "event": {
+      "id": 1234567,
+      "name": "Copenhagen Marathon 2013",
+      "url": "https://api.betternow.org/events/1234567",
+      "html_url": "https://www.betternow.org/dk/events/copenhagen-marathon-2013"
     },
     "slug": "firstname-lastnames-fundraiser-for-helpnow",
     "updated_at": "2012-01-01T12:00:00Z",

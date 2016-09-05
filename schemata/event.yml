@@ -102,6 +102,19 @@ definitions:
         description: The url to retrieve all fundraisers
         example: 'https://api.betternow.org/events/1234567/fundraisers'
         "$ref": "/schemata/common#/definitions/url"
+  event_summary:
+    description: A summarized version of the Event for use in other resources
+    type:
+      - object
+    properties:
+      id:
+        "$ref": "/schemata/event#/definitions/id"
+      name:
+        "$ref": "/schemata/event#/definitions/name"
+      url:
+        "$ref": "/schemata/event#/definitions/url"
+      html_url:
+        "$ref": "/schemata/event#/definitions/html_url"
 description: An Event is something that takes place at a particular time and/or place. It could be a sporting event like the Copenhagen Marathon 2013, or a holiday like Christmas 2014
 links:
 - description: Info for existing event.
