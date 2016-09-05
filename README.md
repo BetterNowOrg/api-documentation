@@ -15,8 +15,26 @@ The design of our API is heavily informed by [Heroku's HTTP API Design
 Guide](https://github.com/interagent/http-api-design) and their [Platform
 API](https://devcenter.heroku.com/articles/platform-api-reference)
 
-<!-- START doctoc -->
-<!-- END doctoc -->
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
+
+- [Authentication](#authentication)
+- [Caching](#caching)
+- [Clients](#clients)
+- [CORS](#cors)
+- [Rate Limits](#rate-limits)
+- [Pagination via Ranges](#pagination-via-ranges)
+- [JSON Schema](#json-schema)
+- ["Sub-resources"](#sub-resources)
+- [Example Usage](#example-usage)
+- [Event](#event)
+- [Fundraising Page](#fundraising-page)
+- [Organisation](#organisation)
+- [Project](#project)
+- [Team](#team)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
 ## Authentication
 

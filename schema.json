@@ -182,7 +182,7 @@
       "title": "Donation",
       "definitions": {
         "amount": {
-          "description": "The amount of the edonation",
+          "description": "The amount of the donation",
           "type": [
             "object"
           ],
